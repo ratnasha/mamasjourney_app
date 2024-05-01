@@ -1,0 +1,51 @@
+import streamlit as st
+import pandas as pd
+from datetime import datetime, timedelta
+
+# Funktion zur Berechnung des Geburtstermins
+def calculate_due_date(last_period_date):
+    gestation_period = timedelta(days=280)
+    due_date = last_period_date + gestation_period
+    return due_date
+
+# Dummy-Daten für den DataFrame
+data = {
+    'Bauelement': ['Baby', 'Mama', 'Notizen'],
+    'Gewicht': [57, 60, 62],
+    'Blutwerte': ['Normal', 'Erhöht', 'Normal']
+}
+
+# DataFrame erstellen
+df = pd.DataFrame(data)
+
+# Titel der App
+st.title("mamsjourney")
+
+# Eingabefeld für das Datum des letzten Menstruationszyklus
+last_period_date = st.date_input("Datum des letzten Menstruationszyklus:")
+
+# Geburtstermin berechnen
+if last_period_date:
+    due_date = calculate_due_date(last_period_date)
+    st.write("Voraussichtlicher Geburtstermin:", due_date)
+
+# Übersicht über Bauelemente, Gewicht und Blutwerte
+st.header('Übersicht')
+st.write('Schwangerschaftsbauelemente, Gewicht und Blutwerte')
+st.write(df)
+
+# Zeitstrahl mit Kalenderwochen
+st.header('Zeitstrahl mit Kalenderwochen')
+
+# Dummy-Daten für den Zeitstrahl mit Kalenderwochen
+calendar_weeks_data = {
+    'Kalenderwoche': list(range(1, 41)),
+    'Ereignis': ['Ultraschall', 'Arztbesuch', 'Ernährungsberatung', 'Geburtsvorbereitungskurs', 'Ruhestunde'] * 8
+}
+
+# DataFrame für den Zeitstrahl erstellen
+df_calendar_weeks = pd.DataFrame(calendar_weeks_data)
+
+# Zeitstrahl anzeigen
+st.write(df_calendar_weeks)
+
