@@ -1,4 +1,4 @@
 SafeLoader
-streamlit_authenticator
-st_timeline
+streamlit-authenticator
+streamlit-vis-timeline
 pandas
