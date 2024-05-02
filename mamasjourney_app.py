@@ -17,7 +17,7 @@ from github_contents import GithubContents
 st.set_page_config(page_title="mamasjourney", page_icon=':ship:', layout="wide",)
 
 # Verbindung zu GitHub initialisieren
-github = GithubContents("ratnasha", "FirstApp-data", "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")
+github = GithubContents("ratnasha", "FirstApp-data", "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")
 
 
 
