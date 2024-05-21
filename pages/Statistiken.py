@@ -3,7 +3,6 @@ import streamlit as st
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 import pandas as pd
-from datetime import datetime, timedelta
 from github_contents import GithubContents
 
 # Initialize GithubContents object
@@ -16,8 +15,7 @@ github = GithubContents(
 # Read DataFrame and column names from GitHub
 def read_df(csv):
     if github.file_exists(csv):
-        content = github.get_file_contents(csv)
-        df = pd.read_csv(content)
+        df = github.read_df(csv)
         xaxis = df.columns[0]
         yaxis = df.columns[1]
         return df, xaxis, yaxis
@@ -32,15 +30,15 @@ def plot_graph(csv):
         st.write("### DataFrame:")
         st.write(df)  # Display the DataFrame
         st.write(f"X-axis: {xaxis}, Y-axis: {yaxis}")
-        st.line_chart(df[[xaxis, yaxis]].set_index(xaxis))  # Plot the line chart
+        st.line_chart(df.set_index(xaxis)[yaxis])  # Plot the line chart
     else:
         st.error("Error in loading DataFrame or column names.")
 
-# Plot the graph for the specific file and user
-
+# Load the configuration file
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
+# Initialize the authenticator
 authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
@@ -49,6 +47,7 @@ authenticator = stauth.Authenticate(
     config['preauthorized']
 )
 
+# Authentication
 name, authentication_status, username = authenticator.login()
 if authentication_status:
     authenticator.logout('Logout', 'main')
