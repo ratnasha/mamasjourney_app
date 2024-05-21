@@ -20,7 +20,7 @@ def read_df(csv):
 def plot_graph(csv):
     df, xaxis, yaxis = read_df(csv)  # Get DataFrame and column names
     '''Darstellung eines Linegraph'''
-    st.line_chart(df, x=xaxis, y=yaxis, color='#94c871', width=0, height=0)
+    st.line_chart(df, x='xaxis', y='yaxis', color='#94c871', width=0, height=0)
 
 # Gewicht Mama1
 plot_graph('mama_weights.csv')
