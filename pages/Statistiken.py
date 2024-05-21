@@ -8,17 +8,9 @@ url_weights = 'https://github.com/ratnasha/FirstApp-data/blob/main/mama_weights.
 weight_data = pd.read_csv(url_weights, parse_dates=['date'])
 
 # Darstellung der Daten
-df.set_index('date', inplace=True)
+def plot_line_chart(df):
+  df.set_index('date', inplace=True)
+  st.title('Weight over Time')
+  st.line_chart(df['weight'])
 
-def plot_line_chart():
-  plt.figure(figsize=(10, 6))
-  plt.plot(df.index, df['weight'], marker='o', linestyle='-')
-  plt.xlabel('Datum')
-  plt.ylabel('Gewicht')
-  plt.title('Gewichtsentwicklung')
-  plt.grid(True)
-  plt.xticks(rotation=45)
-  plt.tight_layout()
-  plt.show()
-
-plot_line_chart()
+plot_line_chart(weight_data)
