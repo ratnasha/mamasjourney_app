@@ -27,8 +27,8 @@ def read_df(csv):
 def plot_graph(csv):
     df, xaxis, yaxis = read_df(csv)
     if df is not None and xaxis is not None and yaxis is not None:
-        st.write("### {yaxis}:")
-        st.write(f"X-axis: {xaxis}, Y-axis: {yaxis}")
+        st.write("### Statistik:")
+        st.write(f"X-Achse: {xaxis}, Y-Achse: {yaxis} (in kg)")
         st.line_chart(df.set_index(xaxis)[yaxis])  # Plot the line chart
     else:
         st.error("Error in loading DataFrame or column names.")
