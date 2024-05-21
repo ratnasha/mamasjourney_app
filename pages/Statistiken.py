@@ -11,7 +11,7 @@ github = GithubContents(
 # Read Dataframe
 def read_df(csv):
   if github.file_exists(csv):
-            df = github.read_csv(csv)
+            df = github.read_df(csv)
             st.write(df)
 
 # Darstellung der Daten
