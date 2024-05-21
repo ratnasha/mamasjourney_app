@@ -20,5 +20,5 @@ def plot_line_chart(df):
   st.line_chart(df['weight'])
 
 # Gewicht Mama1
-read_df("mama_weights.csv")
-plot_line_chart(weight_data)
+weights_mama = read_df("mama_weights.csv")
+plot_line_chart(data = weights_mama, width=0, length=0)
