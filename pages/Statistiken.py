@@ -8,12 +8,18 @@ github = GithubContents(
             st.secrets["github"]["repo"],
             st.secrets["github"]["token"])
 
-# Read Dataframe
+# Read Dataframe and Names for Line Graph
 def read_df(csv):
   if github.file_exists(csv):
             df = github.read_df(csv)
-            st.write(df)
+            xaxis = pd.read_csv(csv).columns[0]
+            yaxis = pd.read_csv(csv).columns[1]
 
 # Darstellung der Daten
-weights_mama = read_df("mama_weights.csv")
-st.line_chart(data = weights_mama)
+def plot_graph(csv):
+  data = read_df(csv)
+  '''Darstellung eines Linegraph'''
+  st.line_chart(data, x=xaxis, y=yaxis, color='#94c871', width=0, height=0)
+
+# Gewicht Mama1
+plot_graph('mama_weights.csv')
