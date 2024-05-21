@@ -7,12 +7,13 @@ github = GithubContents(
     st.secrets["github"]["owner"],
     st.secrets["github"]["repo"],
     st.secrets["github"]["token"]
-    )
+)
 
-# Read DataFrame and column names
+# Read DataFrame and column names from GitHub
 def read_df(csv):
     if github.file_exists(csv):
-        df = github.read_df(csv)
+        content = github.get_file_contents(csv)
+        df = pd.read_csv(content)
         xaxis = df.columns[0]
         yaxis = df.columns[1]
         return df, xaxis, yaxis
@@ -37,6 +38,6 @@ if authentication_status:
     if username == 'mama1':
         st.write(f'Welcome *{name}*')
         plot_graph('mama_weights.csv')
-elif username == 'mama2':
+    elif username == 'mama2':
         st.write(f'Welcome *{name}*')
         plot_graph('mama_weights_mama2.csv')
