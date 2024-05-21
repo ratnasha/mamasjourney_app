@@ -32,7 +32,20 @@ def plot_graph(csv):
     else:
         st.error("Error in loading DataFrame or column names.")
 
-# Plot the graph for the specific file
+# Plot the graph for the specific file and user
+
+with open('./config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
+
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['preauthorized']
+)
+
+name, authentication_status, username = authenticator.login()
 if authentication_status:
     authenticator.logout('Logout', 'main')
     if username == 'mama1':
