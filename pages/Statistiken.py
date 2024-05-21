@@ -4,13 +4,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Read Dataframe for weight
-url_weights = 'https://github.com/ratnasha/FirstApp-data/blob/main/mama_weights.csv'
-weight_data = pd.read_csv(url_weights, parse_dates=['date'])
+def read_df(csv):
+  if github.file_exists(csv):
+            df = github.read_csv(csv)
+            st.write(df)
 
 # Darstellung der Daten
 def plot_line_chart(df):
-  df.set_index('date', inplace=True)
-  st.title('Weight over Time')
+  st.title('Gewichtsentwicklung')
   st.line_chart(df['weight'])
 
+read_df("mama_weights.csv")
 plot_line_chart(weight_data)
