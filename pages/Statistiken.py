@@ -3,6 +3,11 @@ import pandas as pd
 import numpy as np
 from github_contents import GithubContents
 
+github = GithubContents(
+            st.secrets["github"]["owner"],
+            st.secrets["github"]["repo"],
+            st.secrets["github"]["token"])
+
 # Read Dataframe
 def read_df(csv):
   if github.file_exists(csv):
