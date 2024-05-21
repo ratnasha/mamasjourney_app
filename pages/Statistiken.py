@@ -27,8 +27,7 @@ def read_df(csv):
 def plot_graph(csv):
     df, xaxis, yaxis = read_df(csv)
     if df is not None and xaxis is not None and yaxis is not None:
-        st.write("### DataFrame:")
-        st.write(df)  # Display the DataFrame
+        st.write("### f{yaxis}:")
         st.write(f"X-axis: {xaxis}, Y-axis: {yaxis}")
         st.line_chart(df.set_index(xaxis)[yaxis])  # Plot the line chart
     else:
