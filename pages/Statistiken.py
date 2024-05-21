@@ -27,9 +27,9 @@ def read_df(csv):
 def plot_graph(csv):
     df, xaxis, yaxis = read_df(csv)
     if df is not None and xaxis is not None and yaxis is not None:
-        st.write("### Statistik:")
+        st.write("### Gewichtsverlauf:")
         st.write(f"X-Achse: {xaxis}, Y-Achse: {yaxis} (in kg)")
-        st.line_chart(df.set_index(xaxis)[yaxis])  # Plot the line chart
+        st.line_chart(df.set_index(xaxis)[yaxis], color='#77ddaa' height=0, width=0)  # Plot the line chart
     else:
         st.error("Error in loading DataFrame or column names.")
 
@@ -46,7 +46,7 @@ authenticator = stauth.Authenticate(
     config['preauthorized']
 )
 
-# Authentication
+# Authentication and visualizing the charts
 name, authentication_status, username = authenticator.login()
 if authentication_status:
     authenticator.logout('Logout', 'main')
