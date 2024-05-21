@@ -15,10 +15,5 @@ def read_df(csv):
             st.write(df)
 
 # Darstellung der Daten
-def plot_line_chart(df):
-  st.title('Gewichtsentwicklung')
-  st.line_chart(df['weight'])
-
-# Gewicht Mama1
 weights_mama = read_df("mama_weights.csv")
-plot_line_chart(data = weights_mama, width=0, length=0)
+st.line_chart(data = weights_mama)
