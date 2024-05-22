@@ -73,14 +73,14 @@ def main(username):
     mama_weight_date = st.date_input("Datum", value=datetime.today(), min_value=last_period_date, max_value=datetime.today(), format="YYYY/MM/DD")
     mama_weight = st.number_input("Gewicht (kg)", min_value=0.0)
     if st.button("Gewicht speichern"):
-        new_row = pd.DataFrame({"Datum": [mama_weight_date], "Gewicht": [mama_weight]})
+        new_row = pd.DataFrame({"Datum": [mama_weight_date], "Gewicht (kg)": [mama_weight]})
         file_name = f"mama_weights_{file_suffix}.csv"
         if github.file_exists(file_name):
             mama_weights_df = github.read_df(file_name)
             mama_weights_df = pd.concat([mama_weights_df, new_row], ignore_index=True)
         else:
             mama_weights_df = new_row.copy()
-        github.write_df(file_name, mama_weights_df, "Save mama weight")
+        github.write_df(file_name, mama_weights_df, "Speicher Gewicht")
 
     st.subheader('Mama Gewichtsdaten')
     if github.file_exists(f"mama_weights_{file_suffix}.csv"):
@@ -92,14 +92,14 @@ def main(username):
     st.write('Blutwert')
     blutwerte_text = st.text_area("Blutzuckerwerte")
     if st.button("Blutwert speichern"):
-        new_row = pd.DataFrame({"Date": [mama_weight_date], "Blutzuckerwert (in mg/dL)": [blutwerte_text]})
+        new_row = pd.DataFrame({"Datum": [mama_weight_date], "Blutzuckerwert (in mg/dL)": [blutwerte_text]})
         file_name = f"mama_blutwert_{file_suffix}.csv"
         if github.file_exists(file_name):
             mama_blutwert_df = github.read_df(file_name)
             mama_blutwert_df = pd.concat([mama_blutwert_df, new_row], ignore_index=True)
         else:
             mama_blutwert_df = new_row.copy()
-        github.write_df(file_name, mama_blutwert_df, "Save mama Blutzuckerwert")
+        github.write_df(file_name, mama_blutwert_df, "Speicher Blutzuckerwert")
 
     st.subheader('Mama Blutzuckerwert')
     if github.file_exists(f"mama_blutwert_{file_suffix}.csv"):
@@ -112,14 +112,14 @@ def main(username):
     st.write('Ideen Name')
     baby_name_text = st.text_area("Babyname")
     if st.button("Name speichern"):
-        new_row = pd.DataFrame({"Date": [mama_weight_date], "Babyname": [baby_name_text]})
+        new_row = pd.DataFrame({"Datum": [mama_weight_date], "Babyname": [baby_name_text]})
         file_name = f"baby_name_{file_suffix}.csv"
         if github.file_exists(file_name):
             mama_babyname_df = github.read_df(file_name)
             mama_babyname_df = pd.concat([mama_babyname_df, new_row], ignore_index=True)
         else:
             mama_babyname_df = new_row.copy()
-        github.write_df(file_name, mama_babyname_df, "Save mama Babyname")
+        github.write_df(file_name, mama_babyname_df, "Speicher Babyname")
 
     st.subheader('Baby Name')
     if github.file_exists(f"baby_name_{file_suffix}.csv"):
@@ -138,7 +138,7 @@ def main(username):
             tagebuch_df = pd.concat([tagebuch_df, new_row], ignore_index=True)
         else:
             tagebuch_df = new_row.copy()
-        github.write_df(file_name, tagebuch_df, "Save mama Tagebucheintrag")
+        github.write_df(file_name, tagebuch_df, "Speicher Tagebucheintrag")
 
     st.subheader('Tagebuch')
     if github.file_exists(f"tagebuch_{file_suffix}.csv"):
