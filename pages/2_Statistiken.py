@@ -24,7 +24,7 @@ def read_df(csv):
         return None, None, None
 
 # Function to plot the graph
-def plot_graph(csv, title):
+def plot_graph(csv, title, y_label):
     df, xaxis, yaxis = read_df(csv)
     if df is not None and xaxis is not None and yaxis is not None:
         st.write(f"### {title}:")
@@ -51,8 +51,8 @@ name, authentication_status, username = authenticator.login()
 if authentication_status:
     authenticator.logout('Logout', 'main')
     st.write(f'Welcome *{name}*')
-    plot_graph(f'mama_weights_{username}.csv', 'Gewichtsverlauf','kg')
-    plot_graph(f'mama_blutwert_{username}.csv', 'Blutzuckerwerte Verlauf','mg/dL')
+    plot_graph(f'mama_weights_{username}.csv', 'Gewichtsverlauf', 'kg')
+    plot_graph(f'mama_blutwert_{username}.csv', 'Blutzuckerwerte Verlauf', 'mg/dL')
 elif authentication_status == False:
     st.error('Username/password is incorrect')
 elif authentication_status == None:
