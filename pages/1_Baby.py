@@ -57,7 +57,7 @@ fruchtgroessen = [
 def baby_main(username):
     file_suffix = username
     st.header('Baby')
-    st.write('Ideen Name')
+    st.subheader('Ideen Babyname)'
     baby_name_text = st.text_area("Babyname")
     if st.button("Name speichern"):
         new_row = pd.DataFrame({"Datum": [mama_weight_date], "Babyname": [baby_name_text]})
