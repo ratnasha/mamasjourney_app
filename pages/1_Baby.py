@@ -56,7 +56,7 @@ fruchtgroessen = [
 # Main definieren mit allen gewünschten Funktionen
 def baby_main(username):
     file_suffix = username
-    st.header('Baby')
+    st.header('Baby :ship:')
     st.subheader('Ideen Babyname')
     baby_name_text = st.text_area("Babyname")
     if st.button("Name speichern"):
