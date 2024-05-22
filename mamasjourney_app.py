@@ -32,11 +32,16 @@ def main(username):
     st.write(f'Welcome *{username}*')
 
     def load_last_period_date(file_suffix):
-        try:
-            data = github.read_json(f"last_period_date_{file_suffix}.json")
-            last_period_date = pd.to_datetime(data["last_period_date"])
-        except Exception as e:
-            st.error(f"Error loading last period date: {e}")
+        file_path = f"last_period_date_{file_suffix}.json"
+        if github.file_exists(file_path):
+            try:
+                data = github.read_json(file_path)
+                last_period_date = pd.to_datetime(data["last_period_date"])
+            except Exception as e:
+                st.error(f"Error parsing last period date from {file_path}: {e}")
+                last_period_date = None
+        else:
+            st.error(f"File {file_path} does not exist.")
             last_period_date = None
         return last_period_date
 
