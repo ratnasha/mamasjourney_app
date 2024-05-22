@@ -108,27 +108,7 @@ calendar_weeks_data = {
         st.write(mama_blutwert_df)
     else:
         st.write("Noch keine Blutzuckerwerte vorhanden.")
-
-    st.header('Baby')
-    st.write('Ideen Name')
-    baby_name_text = st.text_area("Babyname")
-    if st.button("Name speichern"):
-        new_row = pd.DataFrame({"Datum": [mama_weight_date], "Babyname": [baby_name_text]})
-        file_name = f"baby_name_{file_suffix}.csv"
-        if github.file_exists(file_name):
-            mama_babyname_df = github.read_df(file_name)
-            mama_babyname_df = pd.concat([mama_babyname_df, new_row], ignore_index=True)
-        else:
-            mama_babyname_df = new_row.copy()
-        github.write_df(file_name, mama_babyname_df, "Speicher Babyname")
-
-    st.subheader('Babyname')
-    if github.file_exists(f"baby_name_{file_suffix}.csv"):
-        mama_babyname_df = github.read_df(f"baby_name_{file_suffix}.csv")
-        st.write(mama_babyname_df)
-    else:
-        st.write("Noch keine Babynamen vorhanden.")
-
+                
     st.header('Tagebuch')
     tagebuch_text = st.text_area("Tagebuch")
     if st.button("Eintrag speichern"):
