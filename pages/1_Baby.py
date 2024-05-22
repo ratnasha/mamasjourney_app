@@ -68,7 +68,6 @@ def baby_main(username):
         else:
             mama_babyname_df = new_row.copy()
         github.write_df(file_name, mama_babyname_df, "Speicher Babyname")
-
     st.subheader('Babyname')
     if github.file_exists(f"baby_name_{file_suffix}.csv"):
         mama_babyname_df = github.read_df(f"baby_name_{file_suffix}.csv")
@@ -78,7 +77,6 @@ def baby_main(username):
     st.subheader('Entwicklung Baby')
     df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Fruchtgröße"])
     st.dataframe(df)
-    st.write("[Weitere Informationen finden Sie hier](#).")
 
 # Load the configuration file
 with open('./config.yaml') as file:
