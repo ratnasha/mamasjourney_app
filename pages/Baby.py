@@ -1,4 +1,6 @@
-#Liste der Fruchtgrößen
+import streamlit as st
+
+# Liste der Fruchtgrößen
 fruchtgroessen = [
     ("4 Wochen", "Mohnsamen"),
     ("5 Wochen", "Sesamsamen"),
@@ -39,5 +41,18 @@ fruchtgroessen = [
     ("40 Wochen", "Kürbis"),
 ]
 
+# Titel der App
+st.title("Babytimeline: Fruchtgrößen als Liste")
 
+# Beschreibung
+st.write("Diese App zeigt die Entwicklung des Babys während der Schwangerschaft anhand von Fruchtgrößen.")
 
+# Tabelle anzeigen
+st.write("### Fruchtgrößen nach Schwangerschaftswochen")
+for woche, frucht in fruchtgroessen:
+    st.write(f"**{woche}:** {frucht}")
+
+# Optional: Benutzerfreundliche Tabelle mit Streamlit DataFrame
+import pandas as pd
+df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Fruchtgröße"])
+st.dataframe(df)
