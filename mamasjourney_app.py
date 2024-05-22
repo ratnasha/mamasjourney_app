@@ -7,13 +7,14 @@ from datetime import datetime, timedelta
 from github_contents import GithubContents
 
 # Page Configuration
-st.set_page_config(page_title="mamasjourney", page_icon=':ship:', layout="wide",)
+st.set_page_config(page_title="mamasjourney", page_icon=':ship:', layout="wide")
 
 # Verbindung zu GitHub initialisieren
 github = GithubContents(
-            st.secrets["github"]["owner"],
-            st.secrets["github"]["repo"],
-            st.secrets["github"]["token"])
+    st.secrets["github"]["owner"],
+    st.secrets["github"]["repo"],
+    st.secrets["github"]["token"]
+)
 
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
@@ -29,28 +30,32 @@ authenticator = stauth.Authenticate(
 
 def main(username):
     st.write(f'Welcome *{username}*')
-    
+
     def load_last_period_date(file_suffix):
         try:
             data = github.read_json(f"last_period_date_{file_suffix}.json")
             last_period_date = pd.to_datetime(data["last_period_date"])
-        except:
+        except Exception as e:
+            st.error(f"Error loading last period date: {e}")
             last_period_date = None
         return last_period_date
 
     def save_last_period_date(date, file_suffix):
-        github.write_json(f"last_period_date_{file_suffix}.json", {"last_period_date": date.strftime("%Y-%m-%d")}, "Save last period date")
+        github.write_json(
+            f"last_period_date_{file_suffix}.json",
+            {"last_period_date": date.strftime("%Y-%m-%d")},
+            "Save last period date"
+        )
 
     def calculate_due_date(last_period_date):
         gestation_period = timedelta(days=280)
         due_date = last_period_date + gestation_period
         return due_date
 
-
     calendar_weeks_data = {
         'Kalenderwoche': list(range(9, 41)),
-        'Ereignis': ['Ultraschall', 'Arztbesuch', 'Ernährungsberatung', 'Geburtsvorbereitungskurs', 'Ruhestunde'] * 8
-    } 
+        'Ereignis': (['Ultraschall', 'Arztbesuch', 'Ernährungsberatung', 'Geburtsvorbereitungskurs', 'Ruhestunde'] * 8)[:32]
+    }
 
     st.title("mamasjourney :ship:")
 
@@ -67,6 +72,12 @@ def main(username):
         due_date = calculate_due_date(last_period_date)
         st.write("Voraussichtlicher Geburtstermin:", due_date)
         st.subheader('Schwangerschafts-Timeline')
+
+        # Ensure all lists are the same length for the DataFrame
+        min_length = min(len(calendar_weeks_data[key]) for key in calendar_weeks_data)
+        for key in calendar_weeks_data:
+            calendar_weeks_data[key] = calendar_weeks_data[key][:min_length]
+
         df_calendar_weeks = pd.DataFrame(calendar_weeks_data)
         st.write(df_calendar_weeks)
 
@@ -108,7 +119,7 @@ def main(username):
         st.write(mama_blutwert_df)
     else:
         st.write("Noch keine Blutzuckerwerte vorhanden.")
-                
+
     st.header('Tagebuch')
     tagebuch_text = st.text_area("Tagebuch")
     if st.button("Eintrag speichern"):
