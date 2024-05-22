@@ -1,16 +1,7 @@
 import streamlit as st
 
-st.title("Links")
+st.title("Weiterführende Links")
 
-# Einfügen des Swissmom-Links
-link = '[Besuche Swissmom](https://www.swissmom.ch)'
-st.markdown(link, unsafe_allow_html=True)
-
-st.write("Dies ist eine einfache Streamlit-App mit einem Link zu Swissmom.")
-import streamlit as st
-
-# Einfügen des Pampers-Schwangerschaftskalender-Links
-link = '[Pampers Schwangerschaftskalender](https://www.pampers.ch/de-ch/schwangerschaft/schwangerschaftskalender)'
-st.markdown(link, unsafe_allow_html=True)
-
-st.write("Besuche den obigen Link, um den Schwangerschaftskalender von Pampers zu sehen.")
+# Adding a link button for diffrent useful websites
+st.link_button("Besuche Swissmom", "https://www.swissmom.ch")
+st.link_button("Pampers Schwangerschaftskalender", "https://www.pampers.ch/de-ch/schwangerschaft/schwangerschaftskalender")
