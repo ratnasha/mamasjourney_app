@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("Weiterführende Links")
+st.title("Weiterführende Links :ship:")
 
 # Adding a link button for diffrent useful websites
 st.link_button("Swissmom", "https://www.swissmom.ch")
