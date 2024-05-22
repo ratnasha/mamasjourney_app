@@ -1,53 +1,4 @@
 import streamlit as st
-import pandas as pd
-
-# Liste der Fruchtgrößen
-fruchtgroessen = [
-    ("4 Wochen", "Mohnsamen"),
-    ("5 Wochen", "Sesamsamen"),
-    ("6 Wochen", "Linsenkorn"),
-    ("7 Wochen", "Blaubeere"),
-    ("8 Wochen", "Kidneybohne"),
-    ("9 Wochen", "Traube"),
-    ("10 Wochen", "Kirsche"),
-    ("11 Wochen", "Erdbeere"),
-    ("12 Wochen", "Limette"),
-    ("13 Wochen", "Erbsenschote"),
-    ("14 Wochen", "Zitrone"),
-    ("15 Wochen", "Apfel"),
-    ("16 Wochen", "Avocado"),
-    ("17 Wochen", "Rübe"),
-    ("18 Wochen", "Paprika"),
-    ("19 Wochen", "Mango"),
-    ("20 Wochen", "Banane"),
-    ("21 Wochen", "Karotte"),
-    ("22 Wochen", "Papaya"),
-    ("23 Wochen", "Grapefruit"),
-    ("24 Wochen", "Maiskolben"),
-    ("25 Wochen", "Aubergine"),
-    ("26 Wochen", "Zucchini"),
-    ("27 Wochen", "Blumenkohl"),
-    ("28 Wochen", "Aubergine"),
-    ("29 Wochen", "Butternusskürbis"),
-    ("30 Wochen", "Kohlkopf"),
-    ("31 Wochen", "Kokosnuss"),
-    ("32 Wochen", "Jicama (Yam Bean)"),
-    ("33 Wochen", "Ananas"),
-    ("34 Wochen", "Melone"),
-    ("35 Wochen", "Honigmelone"),
-    ("36 Wochen", "Romanesco"),
-    ("37 Wochen", "Lauch"),
-    ("38 Wochen", "Rhabarber"),
-    ("39 Wochen", "Wassermelone"),
-    ("40 Wochen", "Kürbis"),
-]
-
-# Titel der Seite
-st.subheader("Baby-Timeline: Fruchtgrössen")
-
-# Tabelle mit Streamlit DataFrame
-
-import streamlit as st
 
 st.title("Baby-Timeline mit Fruchtgrößen während der Schwangerschaft")
 
@@ -64,7 +15,34 @@ baby_entwicklung = {
     "Woche 10: Pflaume": "https://example.com/plum.jpg",
     "Woche 11: Limette": "https://example.com/lime.jpg",
     "Woche 12: Feige": "https://example.com/fig.jpg",
-    # Füge weitere Entwicklungsstufen hinzu...
+    "Woche 13: Zitrone": "https://example.com/lemon.jpg",
+    "Woche 14: Zwiebel": "https://example.com/onion.jpg",
+    "Woche 15: Apfel": "https://example.com/apple.jpg",
+    "Woche 16: Avocado": "https://example.com/avocado.jpg",
+    "Woche 17: Zwiebel": "https://example.com/onion.jpg",
+    "Woche 18: Gurke": "https://example.com/cucumber.jpg",
+    "Woche 19: Mango": "https://example.com/mango.jpg",
+    "Woche 20: Banane": "https://example.com/banana.jpg",
+    "Woche 21: Karotte": "https://example.com/carrot.jpg",
+    "Woche 22: Paprika": "https://example.com/bell_pepper.jpg",
+    "Woche 23: Aubergine": "https://example.com/eggplant.jpg",
+    "Woche 24: Maiskolben": "https://example.com/corn.jpg",
+    "Woche 25: Blumenkohl": "https://example.com/cauliflower.jpg",
+    "Woche 26: Kopfsalat": "https://example.com/lettuce.jpg",
+    "Woche 27: Eisbergsalat": "https://example.com/iceberg_lettuce.jpg",
+    "Woche 28: Chinesischer Kohl": "https://example.com/bok_choy.jpg",
+    "Woche 29: Butternusskürbis": "https://example.com/butternut_squash.jpg",
+    "Woche 30: Wassermelone": "https://example.com/watermelon.jpg",
+    "Woche 31: Kokosnuss": "https://example.com/coconut.jpg",
+    "Woche 32: Ananas": "https://example.com/pineapple.jpg",
+    "Woche 33: Kürbis": "https://example.com/pumpkin.jpg",
+    "Woche 34: Sellerie": "https://example.com/celery.jpg",
+    "Woche 35: Kokosnuss": "https://example.com/coconut.jpg",
+    "Woche 36: Honigmelone": "https://example.com/cantaloupe.jpg",
+    "Woche 37: Lauch": "https://example.com/leek.jpg",
+    "Woche 38: Spaghetti-Kürbis": "https://example.com/spaghetti_squash.jpg",
+    "Woche 39: Wassermelone": "https://example.com/watermelon.jpg",
+    "Woche 40: Baby (ca. 50 cm)": "https://example.com/baby.jpg",
 }
 
 # Durchlaufe die Baby-Entwicklungsstufen und zeige Bilder an
@@ -73,8 +51,3 @@ for entwicklung, bild_url in baby_entwicklung.items():
     st.image(bild_url, caption=entwicklung, use_column_width=True)
 
 st.write("Das sind einige wichtige Entwicklungsstufen des Babys während der Schwangerschaft, die mit Fruchtgrößen verglichen werden.")
-
-df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Fruchtgröße"])
-st.dataframe(df)
-# Link zu einer externen Ressource
-st.write("Weitere Informationen finden Sie auf [babycenter.com](https://www.babycenter.com/pregnancy-week-by-week).")
