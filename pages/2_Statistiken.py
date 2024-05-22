@@ -50,7 +50,7 @@ authenticator = stauth.Authenticate(
 name, authentication_status, username = authenticator.login()
 if authentication_status:
     authenticator.logout('Logout', 'main')
-    st.write(f'Willkommen *{name}*')
+    st.write(f'Welcome *{name}*')
     st.header('Statistiken :ship:')
     plot_graph(f'mama_weights_{username}.csv', 'Gewichtsverlauf', 'kg')
     plot_graph(f'mama_blutwert_{username}.csv', 'Blutzuckerwerte Verlauf', 'mg/dL')
