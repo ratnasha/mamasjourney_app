@@ -24,11 +24,11 @@ def read_df(csv):
         return None, None, None
 
 # Function to plot the graph
-def plot_graph(csv):
+def plot_graph(csv, title, y_label):
     df, xaxis, yaxis = read_df(csv)
     if df is not None and xaxis is not None and yaxis is not None:
-        st.write("### Gewichtsverlauf:")
-        st.write(f"X-Achse: {xaxis}, Y-Achse: {yaxis}")
+        st.write(f"### {title}:")
+        st.write(f"X-Achse: {xaxis}, Y-Achse: {yaxis} ({y_label})")
         st.line_chart(df.set_index(xaxis)[yaxis], color='#77ddaa', height=0, width=0)  # Plot the line chart
     else:
         st.error("Error in loading DataFrame or column names.")
@@ -51,7 +51,8 @@ name, authentication_status, username = authenticator.login()
 if authentication_status:
     authenticator.logout('Logout', 'main')
     st.write(f'Welcome *{name}*')
-    plot_graph(f'mama_weights_{username}.csv')  # Dynamic file name based on username
+    plot_graph(f'mama_weights_{username}.csv', 'Gewichtsverlauf', 'kg')
+    plot_graph(f'blutzuckerwerte_{username}.csv', 'Blutzuckerwerte Verlauf', 'mg/dL')
 elif authentication_status == False:
     st.error('Username/password is incorrect')
 elif authentication_status == None:
