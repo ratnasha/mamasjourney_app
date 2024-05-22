@@ -48,7 +48,7 @@ def main(username):
 
 
     calendar_weeks_data = {
-        'Kalenderwoche': list(range(1, 41)),
+        'Kalenderwoche': list(range(9, 41)),
         'Ereignis': ['Ultraschall', 'Arztbesuch', 'Ernährungsberatung', 'Geburtsvorbereitungskurs', 'Ruhestunde'] * 8
     } 
 
