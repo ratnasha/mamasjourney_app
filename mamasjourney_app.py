@@ -52,15 +52,6 @@ calendar_weeks_data = {
         'Ereignis': ['Ultraschall', 'Arztbesuch', 'Ernährungsberatung', 'Geburtsvorbereitungskurs', 'Ruhestunde'] * 8
     } 
 
-# Überprüfen des Ergebnisses
-for week, event in zip(calendar_weeks_data['Kalenderwoche'], calendar_weeks_data['Ereignis']):
-    print(f"Kalenderwoche {week}: {event}")
-
-# Überprüfen des Ergebnisses
-for week, event in zip(calendar_weeks_data['Kalenderwoche'], calendar_weeks_data['Ereignis']):
-    print(f"Kalenderwoche {week}: {event}")
-        
-
     st.title("mamasjourney :ship:")
 
     file_suffix = username
