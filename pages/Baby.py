@@ -48,3 +48,5 @@ st.title("Babytimeline: Fruchtgrössen")
 # Tabelle mit Streamlit DataFrame
 df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Fruchtgröße"])
 st.dataframe(df)
+# Link zu einer externen Ressource
+st.write("Weitere Informationen finden Sie auf [babycenter.com](https://www.babycenter.com/pregnancy-week-by-week).")
