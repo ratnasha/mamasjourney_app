@@ -1,7 +1,18 @@
+import yaml
 import streamlit as st
+from yaml.loader import SafeLoader
+import streamlit_authenticator as stauth
 import pandas as pd
+from datetime import datetime, timedelta
+from github_contents import GithubContents
 
-# Liste der Fruchtgrößen
+# Verbindung zu GitHub initialisieren
+github = GithubContents(
+            st.secrets["github"]["owner"],
+            st.secrets["github"]["repo"],
+            st.secrets["github"]["token"])
+
+# Liste der Fruchtgrössen
 fruchtgroessen = [
     ("4 Wochen", "Mohnsamen"),
     ("5 Wochen", "Sesamsamen"),
@@ -42,14 +53,53 @@ fruchtgroessen = [
     ("40 Wochen", "Kürbis"),
 ]
 
-# Titel der App
-st.header('Baby')
-st.subheader("Babytimeline: Fruchtgrößen als Liste")
+# Main definieren mit allen gewünschten Funktionen
+def baby_main(username):
+    file_suffix = username
+    st.header('Baby')
+    st.write('Ideen Name')
+    baby_name_text = st.text_area("Babyname")
+    if st.button("Name speichern"):
+        new_row = pd.DataFrame({"Datum": [mama_weight_date], "Babyname": [baby_name_text]})
+        file_name = f"baby_name_{file_suffix}.csv"
+        if github.file_exists(file_name):
+            mama_babyname_df = github.read_df(file_name)
+            mama_babyname_df = pd.concat([mama_babyname_df, new_row], ignore_index=True)
+        else:
+            mama_babyname_df = new_row.copy()
+        github.write_df(file_name, mama_babyname_df, "Speicher Babyname")
 
-# Optional: Benutzerfreundliche Tabelle mit Streamlit DataFrame
+    st.subheader('Babyname')
+    if github.file_exists(f"baby_name_{file_suffix}.csv"):
+        mama_babyname_df = github.read_df(f"baby_name_{file_suffix}.csv")
+        st.write(mama_babyname_df)
+    else:
+        st.write("Noch keine Babynamen vorhanden.")
+    st.subheader('Entwicklung Baby')
+    df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Fruchtgröße"])
+    st.dataframe(df)
+    st.write("[Weitere Informationen finden Sie hier](#).")
 
-df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Fruchtgröße"])
-st.dataframe(df)
+# Load the configuration file
+with open('./config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
 
-# Link zu einer externen Ressource
-st.write("[Weitere Informationen finden Sie hier](#).")
+# Initialize the authenticator
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['preauthorized']
+)
+
+# Authentication and visualizing the elements
+name, authentication_status, username = authenticator.login()
+if authentication_status:
+    authenticator.logout('Logout', 'main')
+    st.write(f'Welcome *{name}*')
+    baby_main(username)
+elif authentication_status == False:
+    st.error('Username/password is incorrect')
+elif authentication_status == None:
+    st.warning('Please enter your username and password')
