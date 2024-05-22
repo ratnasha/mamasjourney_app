@@ -1,4 +1,4 @@
-Liste der Fruchtgrößen
+#Liste der Fruchtgrößen
 fruchtgroessen = [
     ("4 Wochen", "Mohnsamen"),
     ("5 Wochen", "Sesamsamen"),
