@@ -68,7 +68,6 @@ def baby_main(username):
         else:
             mama_babyname_df = new_row.copy()
         github.write_df(file_name, mama_babyname_df, "Speicher Babyname")
-    st.subheader('Babyname')
     if github.file_exists(f"baby_name_{file_suffix}.csv"):
         mama_babyname_df = github.read_df(f"baby_name_{file_suffix}.csv")
         st.write(mama_babyname_df)
