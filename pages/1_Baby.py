@@ -46,6 +46,34 @@ fruchtgroessen = [
 st.subheader("Baby-Timeline: Fruchtgrössen")
 
 # Tabelle mit Streamlit DataFrame
+
+import streamlit as st
+
+st.title("Baby-Timeline mit Fruchtgrößen während der Schwangerschaft")
+
+# Definition der Baby-Entwicklungsstufen und zugehöriger Bilder
+baby_entwicklung = {
+    "Woche 1-2: Befruchtung": "https://example.com/fertilization.jpg",
+    "Woche 3: Mohnsamen": "https://example.com/poppy_seed.jpg",
+    "Woche 4: Heidelbeere": "https://example.com/blueberry.jpg",
+    "Woche 5: Erbse": "https://example.com/pea.jpg",
+    "Woche 6: Linsen": "https://example.com/lentil.jpg",
+    "Woche 7: Traube": "https://example.com/grape.jpg",
+    "Woche 8: Himbeere": "https://example.com/raspberry.jpg",
+    "Woche 9: Olive": "https://example.com/olive.jpg",
+    "Woche 10: Pflaume": "https://example.com/plum.jpg",
+    "Woche 11: Limette": "https://example.com/lime.jpg",
+    "Woche 12: Feige": "https://example.com/fig.jpg",
+    # Füge weitere Entwicklungsstufen hinzu...
+}
+
+# Durchlaufe die Baby-Entwicklungsstufen und zeige Bilder an
+for entwicklung, bild_url in baby_entwicklung.items():
+    st.subheader(entwicklung)
+    st.image(bild_url, caption=entwicklung, use_column_width=True)
+
+st.write("Das sind einige wichtige Entwicklungsstufen des Babys während der Schwangerschaft, die mit Fruchtgrößen verglichen werden.")
+
 df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Fruchtgröße"])
 st.dataframe(df)
 # Link zu einer externen Ressource
