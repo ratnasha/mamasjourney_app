@@ -56,6 +56,7 @@ def main(username):
     file_suffix = username
     last_period_date = load_last_period_date(file_suffix)
 
+    st.header('Mama')
     if last_period_date is not None:
         last_period_date = st.date_input('Letzter Menstruationszyklus', value=last_period_date, format="YYYY/MM/DD")
     else:
@@ -68,7 +69,6 @@ def main(username):
         df_calendar_weeks = pd.DataFrame(calendar_weeks_data)
         st.write(df_calendar_weeks)
 
-    st.header('Mama')
     st.write('Gewicht')
     mama_weight_date = st.date_input("Datum", value=datetime.today(), min_value=last_period_date, max_value=datetime.today(), format="YYYY/MM/DD")
     mama_weight = st.number_input("Gewicht (kg)", min_value=0.0)
@@ -82,7 +82,7 @@ def main(username):
             mama_weights_df = new_row.copy()
         github.write_df(file_name, mama_weights_df, "Speicher Gewicht")
 
-    st.subheader('Mama Gewichtsdaten')
+    st.subheader('Gewichtsdaten')
     if github.file_exists(f"mama_weights_{file_suffix}.csv"):
         mama_weights_df = github.read_df(f"mama_weights_{file_suffix}.csv")
         st.write(mama_weights_df)
@@ -101,7 +101,7 @@ def main(username):
             mama_blutwert_df = new_row.copy()
         github.write_df(file_name, mama_blutwert_df, "Speicher Blutzuckerwert")
 
-    st.subheader('Mama Blutzuckerwert')
+    st.subheader('Blutzuckerwert')
     if github.file_exists(f"mama_blutwert_{file_suffix}.csv"):
         mama_blutwert_df = github.read_df(f"mama_blutwert_{file_suffix}.csv")
         st.write(mama_blutwert_df)
@@ -121,7 +121,7 @@ def main(username):
             mama_babyname_df = new_row.copy()
         github.write_df(file_name, mama_babyname_df, "Speicher Babyname")
 
-    st.subheader('Baby Name')
+    st.subheader('Babyname')
     if github.file_exists(f"baby_name_{file_suffix}.csv"):
         mama_babyname_df = github.read_df(f"baby_name_{file_suffix}.csv")
         st.write(mama_babyname_df)
