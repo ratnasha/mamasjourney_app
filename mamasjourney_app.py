@@ -47,7 +47,7 @@ def main(username):
         return due_date
 
     calendar_weeks_data = {
-        'Kalenderwoche': list(range(1, 41)),
+        'Kalenderwoche': list(range(8, 41)),
         'Ereignis': ['Ultraschall', 'Arztbesuch', 'Ernährungsberatung', 'Geburtsvorbereitungskurs', 'Ruhestunde'] * 8
     }
 
