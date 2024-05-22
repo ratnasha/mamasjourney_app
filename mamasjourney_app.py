@@ -18,6 +18,7 @@ github = GithubContents(
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
+# Authenticator
 authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
@@ -72,7 +73,7 @@ def main(username):
     mama_weight_date = st.date_input("Datum", value=datetime.today(), min_value=last_period_date, max_value=datetime.today(), format="YYYY/MM/DD")
     mama_weight = st.number_input("Gewicht (kg)", min_value=0.0)
     if st.button("Gewicht speichern"):
-        new_row = pd.DataFrame({"Date": [mama_weight_date], "Weight": [mama_weight]})
+        new_row = pd.DataFrame({"Datum": [mama_weight_date], "Gewicht": [mama_weight]})
         file_name = f"mama_weights_{file_suffix}.csv"
         if github.file_exists(file_name):
             mama_weights_df = github.read_df(file_name)
@@ -89,23 +90,23 @@ def main(username):
         st.write("Noch keine Gewichtsdaten vorhanden.")
 
     st.write('Blutwert')
-    blutwerte_text = st.text_area("Blutwerte")
+    blutwerte_text = st.text_area("Blutzuckerwerte")
     if st.button("Blutwert speichern"):
-        new_row = pd.DataFrame({"Date": [mama_weight_date], "Blutwert": [blutwerte_text]})
+        new_row = pd.DataFrame({"Date": [mama_weight_date], "Blutzuckerwert (in mg/dL)": [blutwerte_text]})
         file_name = f"mama_blutwert_{file_suffix}.csv"
         if github.file_exists(file_name):
             mama_blutwert_df = github.read_df(file_name)
             mama_blutwert_df = pd.concat([mama_blutwert_df, new_row], ignore_index=True)
         else:
             mama_blutwert_df = new_row.copy()
-        github.write_df(file_name, mama_blutwert_df, "Save mama Blutwert")
+        github.write_df(file_name, mama_blutwert_df, "Save mama Blutzuckerwert")
 
-    st.subheader('Mama Blutwert')
+    st.subheader('Mama Blutzuckerwert')
     if github.file_exists(f"mama_blutwert_{file_suffix}.csv"):
         mama_blutwert_df = github.read_df(f"mama_blutwert_{file_suffix}.csv")
         st.write(mama_blutwert_df)
     else:
-        st.write("Noch keine Blutwerte vorhanden.")
+        st.write("Noch keine Blutzuckerwerte vorhanden.")
 
     st.header('Baby')
     st.write('Ideen Name')
@@ -118,14 +119,14 @@ def main(username):
             mama_babyname_df = pd.concat([mama_babyname_df, new_row], ignore_index=True)
         else:
             mama_babyname_df = new_row.copy()
-        github.write_df(file_name, mama_babyname_df, "Save mama Blutwert")
+        github.write_df(file_name, mama_babyname_df, "Save mama Babyname")
 
     st.subheader('Baby Name')
     if github.file_exists(f"baby_name_{file_suffix}.csv"):
         mama_babyname_df = github.read_df(f"baby_name_{file_suffix}.csv")
         st.write(mama_babyname_df)
     else:
-        st.write("Noch keine Blutwerte vorhanden.")
+        st.write("Noch keine Babynamen vorhanden.")
 
     st.header('Tagebuch')
     tagebuch_text = st.text_area("Tagebuch")
@@ -137,14 +138,14 @@ def main(username):
             tagebuch_df = pd.concat([tagebuch_df, new_row], ignore_index=True)
         else:
             tagebuch_df = new_row.copy()
-        github.write_df(file_name, tagebuch_df, "Save mama Blutwert")
+        github.write_df(file_name, tagebuch_df, "Save mama Tagebucheintrag")
 
     st.subheader('Tagebuch')
     if github.file_exists(f"tagebuch_{file_suffix}.csv"):
         tagebuch_df = github.read_df(f"tagebuch_{file_suffix}.csv")
         st.write(tagebuch_df)
     else:
-        st.write("Noch keine Blutwerte vorhanden.")
+        st.write("Noch keine Tagebucheinträge vorhanden.")
 
 name, authentication_status, username = authenticator.login()
 
