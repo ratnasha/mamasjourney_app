@@ -43,7 +43,7 @@ fruchtgroessen = [
 ]
 
 # Titel der Seite
-st.title("Babytimeline: Fruchtgrössen")
+st.title("Baby-Timeline: Fruchtgrössen")
 
 # Tabelle mit Streamlit DataFrame
 df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Fruchtgröße"])
