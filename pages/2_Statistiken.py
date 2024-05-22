@@ -50,9 +50,9 @@ authenticator = stauth.Authenticate(
 name, authentication_status, username = authenticator.login()
 if authentication_status:
     authenticator.logout('Logout', 'main')
-    if username == 'mama1':
-        st.write(f'Welcome *{name}*')
-        plot_graph('mama_weights.csv')
-    elif username == 'mama2':
-        st.write(f'Welcome *{name}*')
-        plot_graph('mama_weights_mama2.csv')
+    st.write(f'Welcome *{name}*')
+    plot_graph(f'mama_weights_{username}.csv')  # Dynamic file name based on username
+elif authentication_status == False:
+    st.error('Username/password is incorrect')
+elif authentication_status == None:
+    st.warning('Please enter your username and password')
