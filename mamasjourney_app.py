@@ -51,6 +51,7 @@ calendar_weeks_data = {
         'Kalenderwoche': list(range(1, 41)),
         'Ereignis': ['Ultraschall', 'Arztbesuch', 'Ernährungsberatung', 'Geburtsvorbereitungskurs', 'Ruhestunde'] * 8
     } 
+
 # Überprüfen des Ergebnisses
 for week, event in zip(calendar_weeks_data['Kalenderwoche'], calendar_weeks_data['Ereignis']):
     print(f"Kalenderwoche {week}: {event}")
