@@ -120,6 +120,8 @@ def main():
     else:
         #replace the code bellow with your own code or switch to another page
         st.success(f"Hurray {st.session_state['username']}!! You are logged in.", icon="🤩")
+        username = {st.session_state['username']}
+        print(username)
         logout_button = st.button("Logout")
         if logout_button:
             st.session_state['authentication'] = False
