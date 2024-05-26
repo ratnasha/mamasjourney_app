@@ -21,8 +21,6 @@ github = GithubContents(
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
-# Debugging Step: Check the loaded config
-st.write("Loaded config:", config)
 
 # Ensure the 'usernames' field exists in 'credentials'
 if 'credentials' not in config:
