@@ -10,6 +10,7 @@ with tab1:
 with tab2:
    st.header("Ernährungsberatung")
    st.link_button("Ernährungsguide BLV","https://www.blv.admin.ch/blv/de/home/lebensmittel-und-ernaehrung/ernaehrung/empfehlungen-informationen/lebensphasen-und-ernaehrungsformen/schwangere-und-stillende.html")
+   st.link_button("Ernährungsguide DGE", "https://www.dge.de/gesunde-ernaehrung/gezielte-ernaehrung/ernaehrung-in-schwangerschaft-und-stillzeit/handlungsempfehlungen-ernaehrung-in-der-schwangerschaft/")
    
 with tab3:
    st.header("Mutterschutz")
