@@ -21,7 +21,6 @@ github = GithubContents(
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
-
 # Ensure the 'usernames' field exists in 'credentials'
 if 'credentials' not in config:
     config['credentials'] = {'usernames': {}}
@@ -176,14 +175,24 @@ def main(username):
 def app():
     page = st.sidebar.selectbox("Choose an action", ["Login", "Register"])
     if page == "Login":
-        name, authentication_status, username = authenticator.login()
-        if authentication_status:
-            authenticator.logout('Logout', 'main')
-            main(username)
-        elif authentication_status == False:
-            st.error('Username/password is incorrect')
-        elif authentication_status == None:
-            st.warning('Please enter your username and password')
+        try:
+            name, authentication_status, username = authenticator.login()
+            st.write(f"Debug: Authentication status - {authentication_status}, Username - {username}")
+
+            if authentication_status:
+                authenticator.logout('Logout', 'main')
+                main(username)
+            elif authentication_status == False:
+                st.error('Username/password is incorrect')
+            elif authentication_status == None:
+                st.warning('Please enter your username and password')
+        except KeyError as e:
+            st.error(f"KeyError: {e}. This may be due to a missing username in the credentials.")
+            st.write("Debug: Please check the token and credentials structure.")
+            st.write(f"Debug: token - {token if 'token' in locals() else 'Token not available'}")
+            st.write(f"Debug: config['credentials'] - {config['credentials']}")
+        except Exception as e:
+            st.error(f"An unexpected error occurred: {e}")
     elif page == "Register":
         register()
 
