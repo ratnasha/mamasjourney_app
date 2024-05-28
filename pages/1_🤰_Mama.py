@@ -44,7 +44,7 @@ def mama_main(username):
 
     if last_period_date:
         due_date = calculate_due_date(last_period_date)
-        st.markdown(f"<div style='font-size: 24px; font-weight: bold;'>Voraussichtlicher Geburtstermin: {due_date.strftime('%Y-%m-%d')}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='font-size: 24px; color: forestgreen;'>Voraussichtlicher Geburtstermin: {due_date.strftime('%Y-%m-%d')}</div>", unsafe_allow_html=True)
         st.subheader('Schwangerschafts-Timeline')
         df_calendar_weeks = pd.DataFrame(calendar_weeks_data)
         st.write(df_calendar_weeks)
