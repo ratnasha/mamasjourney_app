@@ -16,43 +16,43 @@ github = GithubContents(
 
 # Liste der Fruchtgrössen
 fruchtgroessen = [
-    ("4 Wochen", "Mohnsamen", "Mohnsamen.jpg"),
-    ("5 Wochen", "Sonnenblumenkern", "Sonnenblumenkern.jpg"),
-    ("6 Wochen", "Linsenkorn", "Linsenkorn.jpg"),
-    ("7 Wochen", "Heidelbeere","Heidelbeere.jpg"),
-    ("8 Wochen", "Kidneybohne"),
-    ("9 Wochen", "Traube"),
-    ("10 Wochen", "Kirsche"),
-    ("11 Wochen", "Erdbeere"),
-    ("12 Wochen", "Limette"),
-    ("13 Wochen", "Erbsenschote"),
-    ("14 Wochen", "Zitrone"),
-    ("15 Wochen", "Apfel"),
-    ("16 Wochen", "Avocado"),
-    ("17 Wochen", "Rübe"),
-    ("18 Wochen", "Paprika"),
-    ("19 Wochen", "Mango"),
-    ("20 Wochen", "Banane"),
-    ("21 Wochen", "Karotte"),
-    ("22 Wochen", "Papaya"),
-    ("23 Wochen", "Grapefruit"),
-    ("24 Wochen", "Maiskolben"),
-    ("25 Wochen", "Aubergine"),
-    ("26 Wochen", "Zucchini"),
-    ("27 Wochen", "Blumenkohl"),
-    ("28 Wochen", "Aubergine"),
-    ("29 Wochen", "Butternusskürbis"),
-    ("30 Wochen", "Kohlkopf"),
-    ("31 Wochen", "Kokosnuss"),
-    ("32 Wochen", "Jicama (Yam Bean)"),
-    ("33 Wochen", "Ananas"),
-    ("34 Wochen", "Melone"),
-    ("35 Wochen", "Honigmelone"),
-    ("36 Wochen", "Romanesco"),
-    ("37 Wochen", "Lauch"),
-    ("38 Wochen", "Rhabarber"),
-    ("39 Wochen", "Wassermelone"),
-    ("40 Wochen", "Kürbis"),
+    ("4 Wochen", "Mohnsamen.jpg"),
+    ("5 Wochen", "Sonnenblumenkern.jpg"),
+    ("6 Wochen", "Linsenkorn.jpg"),
+    ("7 Wochen", "Heidelbeere.jpg"),
+    ("8 Wochen", "Himbeere.jpg"),
+    ("9 Wochen", "Kirsche.jpg"),
+    ("10 Wochen", "Erdbeere.jpg"),
+    ("11 Wochen", "Feige.jpg"),
+    ("12 Wochen", "Limette.jpg"),
+    ("13 Wochen", "Pflaume.jpg"),
+    ("14 Wochen", "Zitrone.jpg"),
+    ("15 Wochen", "Apfel.jpg"),
+    ("16 Wochen", "Avocado.jpg"),
+    ("17 Wochen", "Kartoffel.jpg"),
+    ("18 Wochen", "Paprika.jpg"),
+    ("19 Wochen", "Mango.jpg"),
+    ("20 Wochen", "Banane.jpg"),
+    ("21 Wochen", "Karotte.jpg"),
+    ("22 Wochen", "Papaya.jpg"),
+    ("23 Wochen", "Grapefruit.jpg"),
+    ("24 Wochen", "Maiskolben.jpg"),
+    ("25 Wochen", "Aubergine".jpg),
+    ("26 Wochen", "Zucchini.jpg"),
+    ("27 Wochen", "Blumenkohl.jpg"),
+    ("28 Wochen", "Kopfsalat.jpg"),
+    ("29 Wochen", "Butternusskürbis.jpg"),
+    ("30 Wochen", "Kohlkopf.jpg"),
+    ("31 Wochen", "Kokosnuss.jpg"),
+    ("32 Wochen", "Jicama.jpg"),
+    ("33 Wochen", ""),
+    ("34 Wochen", ""),
+    ("35 Wochen", ""),
+    ("36 Wochen", ""),
+    ("37 Wochen", ""),
+    ("38 Wochen", ""),
+    ("39 Wochen", ""),
+    ("40 Wochen", ""),
 ]
 
 base_url = "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/"
@@ -80,12 +80,12 @@ def baby_main(username):
         st.write("Noch keine Babynamen vorhanden.")
     # Visualisierung der Grössenentwicklung des Babys
     st.subheader('Entwicklung Baby')
-    df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Grösse", "Image"])
+    df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Grösse"])
     def path_to_image_html(image_name):
-        if image_name:  # Check if the image_name is not empty
+        if image_name:  
             return f'<img src="{base_url}{image_name}?raw=true" width="150" >'
-        return ""  # Return an empty string if there is no image
-    df['Image'] = df['Image'].apply(path_to_image_html)
+        return "" 
+    df['Grösse'] = df['Grösse'].apply(path_to_image_html)
     mid_index = len(df) // 2
     df1 = df.iloc[:mid_index]
     df2 = df.iloc[mid_index:]
