@@ -79,9 +79,9 @@ def baby_main(username):
     st.subheader('Entwicklung Baby')
     df = pd.DataFrame(fruchtgroessen, columns=['Weeks', 'Fruit', 'Image URL'])
     column_config = {
-        "Image URL": st.data_editor.ImageColumn("Image")
+        "Image URL": st.column_config.ImageColumn("Image")
     }
-    st.data_editor(df, column_config=column_config)
+    st.dataframe(df)
 
 # Load the configuration file
 with open('./config.yaml') as file:
