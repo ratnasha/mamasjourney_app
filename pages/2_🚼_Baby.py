@@ -15,7 +15,7 @@ github = GithubContents(
             st.secrets["github"]["token"])
 
 # Liste der Fruchtgrössen
- fruchtgroessen = [
+fruchtgroessen = [
     ("4 Wochen", "Mohnsamen", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Mohnsamen.jpg"),
     ("5 Wochen", "Sonnenblumenkern", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Sonnenblumenkern.jpg"),
     ("6 Wochen", "Linsenkorn"),
