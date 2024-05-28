@@ -89,7 +89,12 @@ def about_mamasjourney():
 
 def main(username):
     st.write(f'Willkommen *{username}*')
-    st.markdown("# mamasjourney ![ship](https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schiff.jpg?raw=true)")
+    st.markdown("""
+    <h1 style="display: flex; align-items: center;">
+        mamasjourney
+        <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schiff.jpg?raw=true" alt="ship" style="height: 1em; margin-left: 10px;">
+    </h1>
+    """, unsafe_allow_html=True)
     about_mamasjourney()
 
 
