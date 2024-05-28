@@ -78,11 +78,10 @@ def baby_main(username):
         st.write("Noch keine Babynamen vorhanden.")
     st.subheader('Entwicklung Baby')
     df = pd.DataFrame(fruchtgroessen, columns=['Weeks', 'Fruit', 'Image URL'])
-    # Display the DataFrame
-    st.dataframe(df)
-    # Display images
-    for index, row in df.iterrows():
-        st.image(row['Image URL'], caption=row['Fruit'])
+    column_config = {
+        "Image URL": st.data_editor.ImageColumn("Image")
+    }
+    st.data_editor(df, column_config=column_config)
 
 # Load the configuration file
 with open('./config.yaml') as file:
