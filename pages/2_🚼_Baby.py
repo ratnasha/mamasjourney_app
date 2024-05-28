@@ -43,14 +43,14 @@ fruchtgroessen = [
     ("30 Wochen", "Kohlkopf.jpg"),
     ("31 Wochen", "Kokosnuss.jpg"),
     ("32 Wochen", "Jicama.jpg"),
-    ("33 Wochen", ""),
-    ("34 Wochen", ""),
-    ("35 Wochen", ""),
-    ("36 Wochen", ""),
-    ("37 Wochen", ""),
-    ("38 Wochen", ""),
-    ("39 Wochen", ""),
-    ("40 Wochen", ""),
+    ("33 Wochen", "Ananas.jpg"),
+    ("34 Wochen", "Cantaloupe.jpg"),
+    ("35 Wochen", "Honigmelone.jpg"),
+    ("36 Wochen", "Romana-Salat.jpg"),
+    ("37 Wochen", "Lauch.jpg"),
+    ("38 Wochen", "Rhabarber.jpg"),
+    ("39 Wochen", "Wassermelone.jpg"),
+    ("40 Wochen", "Kürbis.jpg"),
 ]
 
 base_url = "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/"
