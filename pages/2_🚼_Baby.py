@@ -16,8 +16,12 @@ github = GithubContents(
 
 # Liste der Fruchtgrössen
 fruchtgroessen = [
-    ("4 Wochen", "Mohnsamen"),
-    ("5 Wochen", "Sesamsamen"),
+    ("4 Wochen", "Mohnsamen", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Mohnsamen.jpg"),
+    ("5 Wochen", "Sonnenblumenkern", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Sonnenblumenkern.jpg"),
+    
+fruchtgroessen = [
+    ("4 Wochen", "Mohnsamen", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Mohnsamen.jpg"),
+    ("5 Wochen", "Sonnenblumenkern", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Sonnenblumenkern.jpg"),
     ("6 Wochen", "Linsenkorn"),
     ("7 Wochen", "Blaubeere"),
     ("8 Wochen", "Kidneybohne"),
@@ -77,7 +81,7 @@ def baby_main(username):
     else:
         st.write("Noch keine Babynamen vorhanden.")
     st.subheader('Entwicklung Baby')
-    df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Fruchtgröße"])
+    df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Fruchtgröße", "Bild"])
     st.dataframe(df)
 
 # Load the configuration file
