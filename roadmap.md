@@ -10,4 +10,4 @@ Grund: https://github.com/giswqs/streamlit-timeline
 Issue: https://github.com/giswqs/streamlit-timeline/issues/8
 Darum haben wir eine andere Lösung gesucht und vorerst eine Tabelle mit SSW generiert. 
 Neue Ziele: Registrierung, eigene Bilder zeichnen, Logo machen
-Die neuen Herausforderung wie auch Ziele haben wir gut gemeistert.
+Zusammenfassend haben wir die neuen Herausforderungen wie auch Ziele gut gemeistert.
