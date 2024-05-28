@@ -34,7 +34,7 @@ with tab4:
 with tab5:
     st.header("Geburtsvorbereitungskurse")
     st.link_button("Inselspital Bern", 'https://frauenheilkunde.insel.ch/de/unser-angebot/geburtshilfe/kurse-und-infoveranstaltungen/geburtsvorbereitungskurs')
-    st.link_button("Hirslanden Klinik Stephanshorn", 'https://www.hirslanden.ch/de/klinik-stephanshorn/kurse-und-veranstaltungen/schwangerschaft-und-geburt/geburtsvorbereitungskurs.html')
+    st.link_button("Kantonsspital St.Gallen", 'https://www.kssg.ch/frauenklinik/leistungsangebot/geburtsvorbereitungskurs-frauenklinik')
     st.link_button("Universitätsspital Zürich", 'https://www.usz.ch/fachbereich/geburtshilfe/kurse-schwangere-eltern/geburtsvorbereitung-kk/')
     st.link_button('Swissmom','https://www.swissmom.ch/de/schwangerschaft/geburtsvorbereitung/kurse-zur-geburtsvorbereitung-9716')
         
