@@ -64,7 +64,12 @@ name, authentication_status, username = authenticator.login()
 if authentication_status:
     authenticator.logout('Logout', 'main')
     st.write(f'Welcome *{name}*')
-    st.header('Statistiken :ship:')
+    st.markdown("""
+    <h1 style="display: flex; align-items: center;">
+        Statistiken
+        <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schiff.jpg?raw=true" alt="ship" style="height: 1em; margin-left: 10px;">
+    </h1>
+    """, unsafe_allow_html=True)
     plot_graph(f'mama_weights_{username}.csv', 'Gewichtsverlauf', 'kg')
     plot_graph(f'mama_blutwert_{username}.csv', 'Blutzuckerwerte Verlauf', 'mg/dL')
 elif authentication_status == False:
