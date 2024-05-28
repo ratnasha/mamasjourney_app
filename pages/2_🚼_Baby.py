@@ -78,9 +78,11 @@ def baby_main(username):
         st.write("Noch keine Babynamen vorhanden.")
     # Visualisierung der Grössenentwicklung des Babys
     st.subheader('Entwicklung Baby')
-    df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Grösse", ""])
+    df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Grösse", "Image"])
     def path_to_image_html(path):
-        return f'<img src="{path}" width="150" >'
+        if path:  
+            return f'<img src="{path}" width="150" >'
+        return ""  
     df['Image'] = df['Image'].apply(path_to_image_html)
     html = df.to_html(escape=False, index=False, justify='center', border=0)
     st.markdown(html, unsafe_allow_html=True)
