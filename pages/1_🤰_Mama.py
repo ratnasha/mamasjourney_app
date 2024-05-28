@@ -34,7 +34,12 @@ def mama_main(username):
 
     last_period_date = load_last_period_date(file_suffix)
 
-    st.header('Mama :ship:')
+    st.markdown("""
+    <h1 style="display: flex; align-items: center;">
+        Mama
+        <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schiff.jpg?raw=true" alt="ship" style="height: 1em; margin-left: 10px;">
+    </h1>
+    """, unsafe_allow_html=True)
     if last_period_date is not None:
         last_period_date = st.date_input('Letzter Menstruationszyklus', value=last_period_date, format="YYYY/MM/DD")
     else:
