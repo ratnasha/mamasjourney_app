@@ -2,7 +2,12 @@ import streamlit as st
 
 st.set_page_config(page_title="mamasjourney", page_icon=':ship:', layout="wide")
 
-st.title("Weiterführende Links :ship:")
+st.markdown("""
+    <h1 style="display: flex; align-items: center;">
+        Weiterführende Links
+        <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schiff.jpg?raw=true" alt="ship" style="height: 1em; margin-left: 10px;">
+    </h1>
+    """, unsafe_allow_html=True)
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Allgemein","Ernährung", "Rechtsschutz", "Entwicklung", "Beschwerden"])
 
 with tab1:
