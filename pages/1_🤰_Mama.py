@@ -48,7 +48,7 @@ def mama_main(username):
         st.write(df_calendar_weeks)
 
     st.write('Gewicht')
-    mama_weight_date = st.date_input("Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
+    mama_weight_date = st.date_input("Gewicht Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     mama_weight = st.number_input("Gewicht (kg)", min_value=0.0)
     if st.button("Gewicht speichern"):
         new_row = pd.DataFrame({"Datum": [mama_weight_date], "Gewicht (kg)": [mama_weight]})
@@ -68,7 +68,7 @@ def mama_main(username):
         st.write("Noch keine Gewichtsdaten vorhanden.")
 
     st.write('Blutwerte')
-    blutwerte_date = st.date_input("Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
+    blutwerte_date = st.date_input("Blutwerte Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     blutwerte_text = st.text_area("Blutzuckerwerte")
     if st.button("Blutwert speichern"):
         new_row = pd.DataFrame({"Datum": [blutwerte_date], "Blutzuckerwert (in mg/dL)": [blutwerte_text]})
@@ -88,7 +88,7 @@ def mama_main(username):
         st.write("Noch keine Blutzuckerwerte vorhanden.")
                 
     st.header('Tagebuch')
-    tagebuch_date = st.date_input("Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
+    tagebuch_date = st.date_input("Tagebuch Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     tagebuch_text = st.text_area("Tagebuch")
     if st.button("Eintrag speichern"):
         new_row = pd.DataFrame({"Date": [tagebuch_date], "Tagebuch": [tagebuch_text]})
