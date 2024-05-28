@@ -30,7 +30,7 @@ def plot_graph(csv, title, y_label):
         st.write(f"X-Achse: {xaxis}, Y-Achse: {yaxis}")
         st.line_chart(df.set_index(xaxis)[yaxis], color='#77ddaa', height=0, width=0)  # Plot the line chart
     else:
-        st.warning(f"No data available for {title}.")
+        st.warning(f"Es wurden keine Daten erfasst für {title}.")
 
 # Load configuration
 def load_config():
