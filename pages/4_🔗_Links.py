@@ -13,6 +13,8 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Allgemein","Ernährung", "Rechtsschutz"
 with tab1:
    st.header("Allgemeine Informationen")
    st.link_button("Swissmom", "https://www.swissmom.ch")
+   st.link_button("Elternbildung", "https://www.elternbildung.ch")
+   st.link_button("Kinderspital Zürich", "https://kispi.uzh.ch") 
    
 with tab2:
    st.header("Ernährungsberatung")
