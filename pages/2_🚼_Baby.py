@@ -16,10 +16,10 @@ github = GithubContents(
 
 # Liste der Fruchtgrössen
 fruchtgroessen = [
-    ("4 Wochen", "Mohnsamen", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Mohnsamen.jpg"),
-    ("5 Wochen", "Sonnenblumenkern", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Sonnenblumenkern.jpg"),
-    ("6 Wochen", "Linsenkorn","https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Linsenkorn.jpg"),
-    ("7 Wochen", "Heidelbeere","https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Heidelbeere.jpg"),
+    ("4 Wochen", "Mohnsamen", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Mohnsamen.jpg?raw=true"),
+    ("5 Wochen", "Sonnenblumenkern", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Sonnenblumenkern.jpg?raw=true"),
+    ("6 Wochen", "Linsenkorn","https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Linsenkorn.jpg?raw=true"),
+    ("7 Wochen", "Heidelbeere","https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Heidelbeere.jpg?raw=true"),
     ("8 Wochen", "Kidneybohne"),
     ("9 Wochen", "Traube"),
     ("10 Wochen", "Kirsche"),
