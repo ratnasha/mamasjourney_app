@@ -32,12 +32,9 @@ def mama_main(username):
         'Ereignis': ['Ultraschall', 'Arztbesuch', 'Ernährungsberatung', 'Geburtsvorbereitungskurs', 'Ruhestunde'] * 8
     } 
 
-    st.title("mamasjourney :ship:")
-
-    file_suffix = username
     last_period_date = load_last_period_date(file_suffix)
 
-    st.header('Mama')
+    st.header('Mama :ship:')
     if last_period_date is not None:
         last_period_date = st.date_input('Letzter Menstruationszyklus', value=last_period_date, format="YYYY/MM/DD")
     else:
@@ -70,11 +67,11 @@ def mama_main(username):
     else:
         st.write("Noch keine Gewichtsdaten vorhanden.")
 
-    st.write('Blutwert')
+    st.write('Blutwerte')
     blutwerte_date = st.date_input("Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     blutwerte_text = st.text_area("Blutzuckerwerte")
     if st.button("Blutwert speichern"):
-        new_row = pd.DataFrame({"Datum": [blutwert_date], "Blutzuckerwert (in mg/dL)": [blutwerte_text]})
+        new_row = pd.DataFrame({"Datum": [blutwerte_date], "Blutzuckerwert (in mg/dL)": [blutwerte_text]})
         file_name = f"mama_blutwert_{file_suffix}.csv"
         if github.file_exists(file_name):
             mama_blutwert_df = github.read_df(file_name)
