@@ -22,9 +22,6 @@ def mama_main(username):
             last_period_date = None
         return last_period_date
 
-    def save_last_period_date(date, file_suffix):
-        github.write_json(f"last_period_date_{file_suffix}.json", {"last_period_date": date.strftime("%Y-%m-%d")}, "Save last period date")
-
     def calculate_due_date(last_period_date):
         gestation_period = timedelta(days=280)
         due_date = last_period_date + gestation_period
