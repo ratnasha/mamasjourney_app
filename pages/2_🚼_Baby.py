@@ -37,7 +37,7 @@ fruchtgroessen = [
     ("22 Wochen", "Papaya.jpg"),
     ("23 Wochen", "Grapefruit.jpg"),
     ("24 Wochen", "Maiskolben.jpg"),
-    ("25 Wochen", "Aubergine".jpg),
+    ("25 Wochen", "Aubergine.jpg"),
     ("26 Wochen", "Zucchini.jpg"),
     ("27 Wochen", "Blumenkohl.jpg"),
     ("28 Wochen", "Kopfsalat.jpg"),
