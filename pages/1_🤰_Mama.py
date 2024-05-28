@@ -1,4 +1,19 @@
-def mama():
+import yaml
+import streamlit as st
+from yaml.loader import SafeLoader
+import streamlit_authenticator as stauth
+import pandas as pd
+from datetime import datetime, timedelta
+from github_contents import GithubContents
+
+# Verbindung zu GitHub initialisieren
+github = GithubContents(
+            st.secrets["github"]["owner"],
+            st.secrets["github"]["repo"],
+            st.secrets["github"]["token"])
+
+def mama_main(username):
+  username = file_suffix
   def load_last_period_date(file_suffix):
         try:
             data = github.read_json(f"last_period_date_{file_suffix}.json")
@@ -59,9 +74,10 @@ def mama():
         st.write("Noch keine Gewichtsdaten vorhanden.")
 
     st.write('Blutwert')
+    blutwerte_date = st.date_input("Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     blutwerte_text = st.text_area("Blutzuckerwerte")
     if st.button("Blutwert speichern"):
-        new_row = pd.DataFrame({"Datum": [mama_weight_date], "Blutzuckerwert (in mg/dL)": [blutwerte_text]})
+        new_row = pd.DataFrame({"Datum": [blutwert_date], "Blutzuckerwert (in mg/dL)": [blutwerte_text]})
         file_name = f"mama_blutwert_{file_suffix}.csv"
         if github.file_exists(file_name):
             mama_blutwert_df = github.read_df(file_name)
@@ -78,9 +94,10 @@ def mama():
         st.write("Noch keine Blutzuckerwerte vorhanden.")
                 
     st.header('Tagebuch')
+    tagebuch_date = st.date_input("Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     tagebuch_text = st.text_area("Tagebuch")
     if st.button("Eintrag speichern"):
-        new_row = pd.DataFrame({"Date": [mama_weight_date], "Tagebuch": [tagebuch_text]})
+        new_row = pd.DataFrame({"Date": [tagebuch_date], "Tagebuch": [tagebuch_text]})
         file_name = f"tagebuch_{file_suffix}.csv"
         if github.file_exists(file_name):
             tagebuch_df = github.read_df(file_name)
@@ -95,3 +112,27 @@ def mama():
         st.write(tagebuch_df)
     else:
         st.write("Noch keine Tagebucheinträge vorhanden.")
+
+# Load the configuration file
+with open('./config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
+
+# Initialize the authenticator
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['preauthorized']
+)
+
+# Authentication and visualizing the elements
+name, authentication_status, username = authenticator.login()
+if authentication_status:
+    authenticator.logout('Logout', 'main')
+    st.write(f'Welcome *{name}*')
+    mama_main(username)
+elif authentication_status == False:
+    st.error('Username/password is incorrect')
+elif authentication_status == None:
+    st.warning('Please enter your username and password')
