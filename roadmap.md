@@ -5,6 +5,7 @@ Anschliessend haben wir die Timeline programmiert. Trotz einiger Startschwierigk
 Wir haben ein User-Login mit YAML-Dateien hinzugefügt, jedoch ohne Passwort-Hashes, was eine Problemquelle darstellt. Version 3
 Die nächste Herausforderung besteht darin, die App für den Streamlit-Upload vorzubereiten sowie das User-Login zu verbessern, indem wir Passwort-Hashes verwenden und mehrere Userlogin ermöglichen.
 Die App konnten wir Uploaden,aber die Timeline konnten wir nicht hinzufügen. 
+![image](https://github.com/ratnasha/mamasjourney_app/assets/161899741/122ce6db-8788-42c1-bae7-4bfadabbc113)
 Grund: https://github.com/giswqs/streamlit-timeline
 Issue: https://github.com/giswqs/streamlit-timeline/issues/8
 Darum haben wir eine andere Lösung gesucht und vorerst eine Tabelle mit SSW generiert. 
