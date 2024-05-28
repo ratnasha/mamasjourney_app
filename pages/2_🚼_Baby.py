@@ -18,8 +18,8 @@ github = GithubContents(
 fruchtgroessen = [
     ("4 Wochen", "Mohnsamen", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Mohnsamen.jpg"),
     ("5 Wochen", "Sonnenblumenkern", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Sonnenblumenkern.jpg"),
-    ("6 Wochen", "Linsenkorn"),
-    ("7 Wochen", "Blaubeere"),
+    ("6 Wochen", "Linsenkorn","https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Linsenkorn.jpg"),
+    ("7 Wochen", "Heidelbeere","https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Heidelbeere.jpg"),
     ("8 Wochen", "Kidneybohne"),
     ("9 Wochen", "Traube"),
     ("10 Wochen", "Kirsche"),
@@ -76,12 +76,13 @@ def baby_main(username):
         st.write(mama_babyname_df)
     else:
         st.write("Noch keine Babynamen vorhanden.")
+    # Visualisierung der Grössenentwicklung des Babys
     st.subheader('Entwicklung Baby')
-    df = pd.DataFrame(fruchtgroessen, columns=['Weeks', 'Fruit', 'Image URL'])
-    column_config = {
-        "Image URL": st.column_config.ImageColumn("Image")
-    }
-    st.dataframe(df)
+    df = pd.DataFrame(fruchtgroessen, columns=["Weeks", "Size", "Image"])
+    def path_to_image_html(path):
+        return f'<img src="{path}" width="60" >'
+    html = df.to_html(escape=False, formatters=dict(Image=path_to_image_html))
+    st.write(html, unsafe_allow_html=True)
 
 # Load the configuration file
 with open('./config.yaml') as file:
