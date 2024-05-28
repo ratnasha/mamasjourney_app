@@ -72,7 +72,8 @@ def register():
             st.success("Registration successful! You can now log in.")
             
 def about_mamasjourney():
-    st.markdown("##Willkommen bei deiner persönlichen Schwangerschafts-App")
+    st.subheader("Willkommen bei deiner persönlichen Schwangerschafts-App")
+    st.markdown('Diese App soll dir dabei helfen, blababalabal')
 
 def main(username):
     st.write(f'Willkommen *{username}*')
