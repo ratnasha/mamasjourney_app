@@ -72,7 +72,7 @@ def register():
             st.success("Registration successful! You can now log in.")
 
 def main(username):
-    st.write(f'Welcome *{username}*')
+    st.write(f'Willkommen *{username}*')
     st.title("mamasjourney :ship:")
              
 
