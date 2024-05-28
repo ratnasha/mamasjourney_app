@@ -16,10 +16,10 @@ github = GithubContents(
 
 # Liste der Fruchtgrössen
 fruchtgroessen = [
-    ("4 Wochen", "Mohnsamen", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Mohnsamen.jpg?raw=true"),
-    ("5 Wochen", "Sonnenblumenkern", "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Sonnenblumenkern.jpg?raw=true"),
-    ("6 Wochen", "Linsenkorn","https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Linsenkorn.jpg?raw=true"),
-    ("7 Wochen", "Heidelbeere","https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Heidelbeere.jpg?raw=true"),
+    ("4 Wochen", "Mohnsamen", "Mohnsamen.jpg"),
+    ("5 Wochen", "Sonnenblumenkern", "Sonnenblumenkern.jpg"),
+    ("6 Wochen", "Linsenkorn", "Linsenkorn.jpg"),
+    ("7 Wochen", "Heidelbeere","Heidelbeere.jpg"),
     ("8 Wochen", "Kidneybohne"),
     ("9 Wochen", "Traube"),
     ("10 Wochen", "Kirsche"),
@@ -55,6 +55,8 @@ fruchtgroessen = [
     ("40 Wochen", "Kürbis"),
 ]
 
+base_url = "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/"
+
 # Main definieren mit allen gewünschten Funktionen
 def baby_main(username):
     file_suffix = username
@@ -79,10 +81,12 @@ def baby_main(username):
     # Visualisierung der Grössenentwicklung des Babys
     st.subheader('Entwicklung Baby')
     df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Grösse", "Image"])
-    def path_to_image_html(path):
-        if path:  
-            return f'<img src="{path}" width="150" >'
-        return ""  
+    def path_to_image_html(image_name):
+        if image_name:  # Check if the image_name is not empty
+            return f'<img src="{base_url}{image_name}?raw=true" width="150" >'
+        return ""  # Return an empty string if there is no image
+
+# Apply the function to the 'Image' column to create HTML tags
     df['Image'] = df['Image'].apply(path_to_image_html)
     html = df.to_html(escape=False, index=False, justify='center', border=0)
     st.markdown(html, unsafe_allow_html=True)
