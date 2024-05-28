@@ -1,6 +1,4 @@
-import yaml
 import streamlit as st
-from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 import pandas as pd
 from datetime import datetime, timedelta
@@ -97,10 +95,23 @@ def baby_main(username):
     with col2:
         st.markdown(html2, unsafe_allow_html=True)
 
-# Load the configuration file
-with open('./config.yaml') as file:
-    config = yaml.load(file, Loader=SafeLoader)
+# Load configuration
+def load_config():
+    try:
+        data = github.read_json("config.json")
+        return data
+    except Exception as e:
+        st.error(f"Fehler beim Laden der Konfigurationsdatei: {e}")
+        return {}
 
+def save_config(config):
+    try:
+        github.write_json("config.json", config, "Update config")
+    except Exception as e:
+        st.error(f"Fehler beim Speichern der Konfigurationsdatei: {e}")
+
+# Laden der Konfigurationsdaten
+config = load_config()
 # Initialize the authenticator
 authenticator = stauth.Authenticate(
     config['credentials'],
