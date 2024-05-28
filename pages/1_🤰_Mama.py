@@ -54,7 +54,7 @@ def mama_main(username):
         st.write(df_calendar_weeks)
 
     st.write('Gewicht')
-    mama_weight_date = st.date_input("Datum", value=datetime.today(), min_value=last_period_date, max_value=datetime.today(), format="YYYY/MM/DD")
+    mama_weight_date = st.date_input("Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     mama_weight = st.number_input("Gewicht (kg)", min_value=0.0)
     if st.button("Gewicht speichern"):
         new_row = pd.DataFrame({"Datum": [mama_weight_date], "Gewicht (kg)": [mama_weight]})
