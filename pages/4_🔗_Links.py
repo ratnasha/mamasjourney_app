@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.set_page_config(page_title="mamasjourney", page_icon=':ship:', layout="wide")
+
 st.title("Weiterführende Links :ship:")
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Allgemein","Ernährung", "Rechtsschutz", "Entwicklung", "Beschwerden"])
 
