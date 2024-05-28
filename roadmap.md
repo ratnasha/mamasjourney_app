@@ -9,4 +9,5 @@ Die App konnten wir Uploaden,aber die Timeline konnten wir nicht hinzufügen.
 Grund: https://github.com/giswqs/streamlit-timeline
 Issue: https://github.com/giswqs/streamlit-timeline/issues/8
 Darum haben wir eine andere Lösung gesucht und vorerst eine Tabelle mit SSW generiert. 
-Neue Ziele: noch Sachen verbessern und optimieren, falls machbar. 
+Neue Ziele: Registrierung, eigene Bilder zeichnen, Logo machen
+Die neuen Herausforderung wie auch Ziele haben wir gut gemeistert.
