@@ -58,7 +58,12 @@ base_url = "https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/"
 # Main definieren mit allen gewünschten Funktionen
 def baby_main(username):
     file_suffix = username
-    st.header('Baby :ship:')
+    st.markdown("""
+    <h1 style="display: flex; align-items: center;">
+        Baby
+        <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schiff.jpg?raw=true" alt="ship" style="height: 1em; margin-left: 10px;">
+    </h1>
+    """, unsafe_allow_html=True)
     st.subheader('Ideen Babyname')
     baby_name_date = st.date_input("Babyname Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     baby_name_text = st.text_area("Babyname")
