@@ -20,7 +20,6 @@ def read_df(csv):
         yaxis = df.columns[1]
         return df, xaxis, yaxis
     else:
-        st.error(f"File {csv} does not exist.")
         return None, None, None
 
 # Function to plot the graph
@@ -31,7 +30,7 @@ def plot_graph(csv, title, y_label):
         st.write(f"X-Achse: {xaxis}, Y-Achse: {yaxis}")
         st.line_chart(df.set_index(xaxis)[yaxis], color='#77ddaa', height=0, width=0)  # Plot the line chart
     else:
-        st.error("Error in loading DataFrame or column names.")
+        st.warning(f"No data available for {title}.")
 
 # Load configuration
 def load_config():
