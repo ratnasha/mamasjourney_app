@@ -5,6 +5,8 @@ import streamlit_authenticator as stauth
 import pandas as pd
 from github_contents import GithubContents
 
+st.set_page_config(page_title="mamasjourney", page_icon=':ship:', layout="wide")
+
 # Initialize GithubContents object
 github = GithubContents(
     st.secrets["github"]["owner"],
