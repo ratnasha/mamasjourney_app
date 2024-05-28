@@ -89,7 +89,7 @@ def about_mamasjourney():
 
 def main(username):
     st.write(f'Willkommen *{username}*')
-    st.title("mamasjourney :ship:")
+    st.markdown("# mamasjourney ![ship](https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schiff.jpg?raw=true)"
     about_mamasjourney()
 
 
