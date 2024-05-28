@@ -90,7 +90,7 @@ def about_mamasjourney():
 def main(username):
     st.write(f'Willkommen *{username}*')
     st.markdown("""
-    <div style="text-align: center;">
+    <div style="text-align: left;">
         <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Logo.jpg?raw=true" alt="ship" style="height: 5em;">
     </div>
     """, unsafe_allow_html=True)
