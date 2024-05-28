@@ -13,7 +13,7 @@ github = GithubContents(
             st.secrets["github"]["token"])
 
 def mama_main(username):
-    username = file_suffix
+    file_suffix = username
     def load_last_period_date(file_suffix):
         try:
             data = github.read_json(f"last_period_date_{file_suffix}.json")
