@@ -85,7 +85,8 @@ def baby_main(username):
         if image_name:  # Check if the image_name is not empty
             return f'<img src="{base_url}{image_name}?raw=true" width="150" >'
         return ""  # Return an empty string if there is no image
-    df['Image'] = df['Image'].apply(path_to_image_html)mid_index = len(df) // 2
+    df['Image'] = df['Image'].apply(path_to_image_html)
+    mid_index = len(df) // 2
     df1 = df.iloc[:mid_index]
     df2 = df.iloc[mid_index:]
     html1 = df1.to_html(escape=False, index=False, justify='center', border=0)
