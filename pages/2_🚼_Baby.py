@@ -77,10 +77,12 @@ def baby_main(username):
     else:
         st.write("Noch keine Babynamen vorhanden.")
     st.subheader('Entwicklung Baby')
-    for item in fruchtgroessen:
-        weeks, fruit, image_url = item
-        st.markdown(f'### {weeks}: {fruit}')
-        st.image(image_url, caption=fruit)
+    df = pd.DataFrame(fruchtgroessen, columns=['Weeks', 'Fruit', 'Image URL'])
+    # Display the DataFrame
+    st.dataframe(df)
+    # Display images
+    for index, row in df.iterrows():
+        st.image(row['Image URL'], caption=row['Fruit'])
 
 # Load the configuration file
 with open('./config.yaml') as file:
