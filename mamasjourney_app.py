@@ -7,7 +7,7 @@ import bcrypt
 
 # Page Configuration
 st.set_page_config(page_title="mamasjourney", page_icon=':ship:', layout="wide")
-st.sidebar.image('https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Logo.jpg?raw=true', use_column_width=True)
+st.sidebar.image('https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Logo2.jpg?raw=true', use_column_width=True)
 
 # Verbindung zu GitHub initialisieren
 github = GithubContents(
@@ -91,7 +91,7 @@ def main(username):
     st.write(f'Willkommen *{username}*')
     st.markdown("""
     <div style="text-align: center;">
-        <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Logo2.jpg?raw=true" alt="ship" style="height: 2em;">
+        <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Logo.jpg?raw=true" alt="ship" style="height: 5em;">
     </div>
     """, unsafe_allow_html=True)
     about_mamasjourney()
