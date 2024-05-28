@@ -85,11 +85,16 @@ def baby_main(username):
         if image_name:  # Check if the image_name is not empty
             return f'<img src="{base_url}{image_name}?raw=true" width="150" >'
         return ""  # Return an empty string if there is no image
-
-# Apply the function to the 'Image' column to create HTML tags
-    df['Image'] = df['Image'].apply(path_to_image_html)
-    html = df.to_html(escape=False, index=False, justify='center', border=0)
-    st.markdown(html, unsafe_allow_html=True)
+    df['Image'] = df['Image'].apply(path_to_image_html)mid_index = len(df) // 2
+    df1 = df.iloc[:mid_index]
+    df2 = df.iloc[mid_index:]
+    html1 = df1.to_html(escape=False, index=False, justify='center', border=0)
+    html2 = df2.to_html(escape=False, index=False, justify='center', border=0)
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown(html1, unsafe_allow_html=True)
+    with col2:
+        st.markdown(html2, unsafe_allow_html=True)
 
 # Load the configuration file
 with open('./config.yaml') as file:
