@@ -79,7 +79,8 @@ def baby_main(username):
     st.subheader('Entwicklung Baby')
     for item in fruchtgroessen:
         weeks, fruit, image_url = item
-        display_markdown(f'### {weeks}: {fruit}\n ![Image]({image_url})', raw=True)
+        st.markdown(f'### {weeks}: {fruit}')
+        st.image(image_url, caption=fruit)
 
 # Load the configuration file
 with open('./config.yaml') as file:
