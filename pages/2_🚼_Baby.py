@@ -82,7 +82,9 @@ def baby_main(username):
     def path_to_image_html(path):
         return f'<img src="{path}" width="60" >'
     df['Image'] = df['Image'].apply(path_to_image_html)
-    st.dataframe(df.to_html(escape=False), height=400)
+    html = df.to_html(escape=False, index=False, justify='center', border=0)
+    st.markdown(html, unsafe_allow_html=True)
+    st.dataframe(df.drop(columns=["Image"]), height=400)
 
 # Load the configuration file
 with open('./config.yaml') as file:
