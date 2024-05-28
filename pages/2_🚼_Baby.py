@@ -81,8 +81,8 @@ def baby_main(username):
     df = pd.DataFrame(fruchtgroessen, columns=["Weeks", "Size", "Image"])
     def path_to_image_html(path):
         return f'<img src="{path}" width="60" >'
-    html = df.to_html(escape=False, formatters=dict(Image=path_to_image_html))
-    st.write(html, unsafe_allow_html=True)
+    df['Image'] = df['Image'].apply(path_to_image_html)
+    st.dataframe(df.to_html(escape=False), height=400)
 
 # Load the configuration file
 with open('./config.yaml') as file:
