@@ -27,11 +27,7 @@ def mama_main(username):
         due_date = last_period_date + gestation_period
         return due_date
 
-    calendar_weeks_data = {
-        'Kalenderwoche': list(range(1, 41)),
-        'Ereignis': ['Ultraschall', 'Arztbesuch', 'Ernährungsberatung', 'Geburtsvorbereitungskurs', 'Ruhestunde'] * 8
-    } 
-
+    
     last_period_date = load_last_period_date(file_suffix)
 
     st.markdown("""
@@ -49,9 +45,12 @@ def mama_main(username):
         due_date = calculate_due_date(last_period_date)
         due_date_str = due_date.strftime('%d-%m-%Y')
         st.markdown(f"<div style='font-size: 24px; color: forestgreen;'>Voraussichtlicher Geburtstermin: {due_date_str}</div>", unsafe_allow_html=True)
-        st.subheader('Schwangerschafts-Timeline')
-        df_calendar_weeks = pd.DataFrame(calendar_weeks_data)
-        st.write(df_calendar_weeks)
+
+    st.markdown("""
+    <div style="text-align: center;">
+        <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schwangerschaftsverlauf.jpg?raw=true" alt="ship" style="height: 10em;">
+    </div>
+    """, unsafe_allow_html=True)
 
     st.write('Gewicht')
     mama_weight_date = st.date_input("Gewicht Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
