@@ -51,6 +51,7 @@ def mama_main(username):
         <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schwangerschaftsverlauf.jpg?raw=true" alt="ship" style="height: 25em;">
     </div>
     """, unsafe_allow_html=True)
+    st.divider()
 
     st.write('Gewicht')
     mama_weight_date = st.date_input("Gewicht Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
