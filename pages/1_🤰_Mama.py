@@ -48,7 +48,7 @@ def mama_main(username):
 
     st.markdown("""
     <div style="text-align: center;">
-        <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schwangerschaftsverlauf.jpg?raw=true" alt="ship" style="height: 50em;">
+        <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schwangerschaftsverlauf.jpg?raw=true" alt="ship" style="height: 25em;">
     </div>
     """, unsafe_allow_html=True)
 
