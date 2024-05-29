@@ -45,7 +45,7 @@ def mama_main(username):
         due_date = calculate_due_date(last_period_date)
         due_date_str = due_date.strftime('%d-%m-%Y')
         st.markdown(f"<div style='font-size: 24px; color: forestgreen;'>Voraussichtlicher Geburtstermin: {due_date_str}</div>", unsafe_allow_html=True)
-
+    st.divider()
     st.markdown("""
     <div style="text-align: center;">
         <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schwangerschaftsverlauf.jpg?raw=true" alt="ship" style="height: 25em;">
