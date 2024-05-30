@@ -11,7 +11,7 @@ github = GithubContents(
             st.secrets["github"]["owner"],
             st.secrets["github"]["repo"],
             st.secrets["github"]["token"])
-
+# Hauptfunktion definieren
 def mama_main(username):
     file_suffix = username
     def load_last_period_date(file_suffix):
@@ -21,7 +21,7 @@ def mama_main(username):
         except:
             last_period_date = None
         return last_period_date
-
+    # Berechnung Entbindungsdatum
     def calculate_due_date(last_period_date):
         gestation_period = timedelta(days=280)
         due_date = last_period_date + gestation_period
@@ -29,7 +29,7 @@ def mama_main(username):
 
     
     last_period_date = load_last_period_date(file_suffix)
-
+    # Titel
     st.markdown("""
     <h1 style="display: flex; align-items: center;">
         Mama
@@ -40,19 +40,20 @@ def mama_main(username):
         last_period_date = st.date_input('Letzter Menstruationszyklus', value=last_period_date, format="YYYY/MM/DD")
     else:
         last_period_date = st.date_input('Letzter Menstruationszyklus', format="YYYY/MM/DD")
-
+    # Darstellung Entbindungstermin
     if last_period_date:
         due_date = calculate_due_date(last_period_date)
         due_date_str = due_date.strftime('%d-%m-%Y')
         st.markdown(f"<div style='font-size: 24px; color: forestgreen;'>Voraussichtlicher Geburtstermin: {due_date_str}</div>", unsafe_allow_html=True)
     st.divider()
+    # Schwangerschaftsverlauf Bild Darstellung
     st.markdown("""
     <div style="text-align: center;">
         <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schwangerschaftsverlauf.jpg?raw=true" alt="ship" style="height: 25em;">
     </div>
     """, unsafe_allow_html=True)
     st.divider()
-
+    # Gewichtseintrag
     st.write('Gewicht')
     mama_weight_date = st.date_input("Gewicht Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     mama_weight = st.number_input("Gewicht (kg)", min_value=0.0)
@@ -65,14 +66,14 @@ def mama_main(username):
         else:
             mama_weights_df = new_row.copy()
         github.write_df(file_name, mama_weights_df, "Speicher Gewicht")
-
+    # Gewicht Darstellung
     st.subheader('Gewichtsdaten')
     if github.file_exists(f"mama_weights_{file_suffix}.csv"):
         mama_weights_df = github.read_df(f"mama_weights_{file_suffix}.csv")
         st.write(mama_weights_df)
     else:
         st.write("Noch keine Gewichtsdaten vorhanden.")
-
+    # Blutwerte Eingabe
     st.write('Blutwerte')
     blutwerte_date = st.date_input("Blutwerte Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     blutwerte_text = st.text_area("Blutzuckerwerte")
@@ -85,19 +86,20 @@ def mama_main(username):
         else:
             mama_blutwert_df = new_row.copy()
         github.write_df(file_name, mama_blutwert_df, "Speicher Blutzuckerwert")
-
+    # Blutzucker Darstellung
     st.subheader('Blutzuckerwert')
     if github.file_exists(f"mama_blutwert_{file_suffix}.csv"):
         mama_blutwert_df = github.read_df(f"mama_blutwert_{file_suffix}.csv")
         st.write(mama_blutwert_df)
     else:
         st.write("Noch keine Blutzuckerwerte vorhanden.")
-                
+
+    # Tagebucheintrag
     st.header('Tagebuch')
     tagebuch_date = st.date_input("Tagebuch Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     tagebuch_text = st.text_area("Tagebuch")
     if st.button("Eintrag speichern"):
-        new_row = pd.DataFrame({"Date": [tagebuch_date], "Tagebuch": [tagebuch_text]})
+        new_row = pd.DataFrame({"Datum": [tagebuch_date], "Tagebuch": [tagebuch_text]})
         file_name = f"tagebuch_{file_suffix}.csv"
         if github.file_exists(file_name):
             tagebuch_df = github.read_df(file_name)
@@ -105,7 +107,7 @@ def mama_main(username):
         else:
             tagebuch_df = new_row.copy()
         github.write_df(file_name, tagebuch_df, "Speicher Tagebucheintrag")
-
+    # Tagebuch Darstellung
     st.subheader('Tagebuch')
     if github.file_exists(f"tagebuch_{file_suffix}.csv"):
         tagebuch_df = github.read_df(f"tagebuch_{file_suffix}.csv")
@@ -113,7 +115,7 @@ def mama_main(username):
     else:
         st.write("Noch keine Tagebucheinträge vorhanden.")
 
-# Load configuration
+# Konfiguration laden
 def load_config():
     try:
         data = github.read_json("config.json")
@@ -128,9 +130,9 @@ def save_config(config):
     except Exception as e:
         st.error(f"Fehler beim Speichern der Konfigurationsdatei: {e}")
 
-# Laden der Konfigurationsdaten
 config = load_config()
-# Initialize the authenticator
+
+# Initialisieren des Authenticator
 authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
@@ -139,7 +141,7 @@ authenticator = stauth.Authenticate(
     config['preauthorized']
 )
 
-# Authentication and visualizing the elements
+# Authen and visualizing the elements
 name, authentication_status, username = authenticator.login()
 if authentication_status:
     authenticator.logout('Logout', 'main')
