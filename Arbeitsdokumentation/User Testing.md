@@ -14,7 +14,7 @@ Ich bin wirklich begeistert von der Schwangerschaftsapp! Die Registrierung und d
 
 Ein Highlight für mich ist die Funktion zur Berechnung des Geburtstermins. Das ist nicht nur praktisch, sondern auch spannend, weil man immer wieder nachschauen kann, wie weit es noch bis zum grossen Tag ist. Ausserdem finde ich es super, dass man sein Gewicht und den Blutzuckerwert eintragen kann. Vor allem die Möglichkeit, das Gewicht zu dokumentieren und per Kurve zu verfolgen, ist sehr hilfreich. Durch das Verfolgen der Blutzuckerwerte kann man mögliche Schwangerschaftsdiabetes frühzeitig erkennen und vorbeugen, was mir ein sicheres Gefühl gibt.
 
-Die Tagebucheinträge sind eine großartige Idee. Es ist so praktisch, gleich alles festzuhalten, wenn etwas passiert, und nicht erst nach Hause gehen zu müssen, wo man es oft schon wieder vergessen hat.
+Die Tagebucheinträge sind eine grossartige Idee. Es ist so praktisch, gleich alles festzuhalten, wenn etwas passiert, und nicht erst nach Hause gehen zu müssen, wo man es oft schon wieder vergessen hat.
 
 Auch das Feld mit den Babynamen ist sehr hilfreich. Während der Schwangerschaft fallen einem so viele Namen ein, und diese schriftlich festzuhalten, ist wirklich cool. Die zusätzlichen Links zu verschiedenen Themen sind ebenfalls nützlich, um sich weiter zu informieren.
 
