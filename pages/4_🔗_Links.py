@@ -1,14 +1,14 @@
 import streamlit as st
 
 st.set_page_config(page_title="mamasjourney", page_icon=':ship:', layout="wide")
-
+# Titel
 st.markdown("""
     <h1 style="display: flex; align-items: center;">
         Weiterführende Links
         <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schiff.jpg?raw=true" alt="ship" style="height: 1em; margin-left: 10px;">
     </h1>
     """, unsafe_allow_html=True)
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Allgemein","Ernährung", "Rechtsschutz", "Entwicklung", "Geburtsvorbereitung","Beschwerden"])
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["Allgemein","Ernährung", "Rechtsschutz", "Entwicklung", "Geburtsvorbereitung","Beschwerden", "Nach der Geburt"])
 
 with tab1:
    st.header("Allgemeine Informationen")
@@ -42,3 +42,8 @@ with tab6:
    st.header("Beschwerden in der Schwangerschaft")
    st.link_button("9monate.de", "https://www.9monate.de/schwangerschaft-geburt/beschwerden-erkrankungen/")
 
+with tab7:
+   st.header("Nach der Geburt")
+   st.link_button("Stillförderung Schweiz", "https://www.stillfoerderung.ch/logicio/pmws/stillen__faq__de.html")
+   st.link_button("Swissmom Stillzeit","https://www.swissmom.ch/de/stillen-15115")
+   st.link_button("Frauenärtzte im Netz - Stillen", "https://www.frauenaerzte-im-netz.de/schwangerschaft-geburt/stillen/")
