@@ -5,11 +5,11 @@ Ein App zu haben,welche dieses Buch ersetzt, hat sie umso mehr fasziniert.
 
 
 Hypothese und Bewertung
-Hypothese Lernziele: Wir möchten herausfinden, ob Benutzer versteht, wie sie die wichtigsten Funktionen nutzen können, wie zum Beispiel den Schwangerschaftsfortschritt verfolgen, Gesundheitsinformationen finden.
+Hypothese: Wir möchten herausfinden, ob Benutzer versteht, wie sie die wichtigsten Funktionen nutzen können, wie zum Beispiel den Schwangerschaftsfortschritt verfolgen, Gesundheitsinformationen finden.
 
 Bewertung der APP: Wir bewerten den Erfolg anhand der Leichtigkeit der Navigation, der Zeit, die Benutzer benötigen, um bestimmte Funktionen zu finden, und dem Feedback der Benutzer zu den verschiedenen Features.
 
-APP-User Feedback
+APP-User Feedback/ Bewertung
 Ich bin wirklich begeistert von der Schwangerschaftsapp! Die Registrierung und der Login haben reibungslos funktioniert, was einen tollen ersten Eindruck hinterlassen hat. Das Design ist schlicht und sehr schön, genau nach meinem Geschmack. Besonders gut gefallen mir die Bilder – sie sind wirklich ansprechend und machen die Nutzung der App noch angenehmer.
 
 Ein Highlight für mich ist die Funktion zur Berechnung des Geburtstermins. Das ist nicht nur praktisch, sondern auch spannend, weil man immer wieder nachschauen kann, wie weit es noch bis zum grossen Tag ist. Außerdem finde ich es super, dass man sein Gewicht und den Blutzuckerwert eintragen kann. Vor allem die Möglichkeit, das Gewicht zu dokumentieren und per Kurve zu verfolgen, ist sehr hilfreich. Durch das Verfolgen der Blutzuckerwerte kann man mögliche Schwangerschaftsdiabetes frühzeitig erkennen und vorbeugen, was mir ein sicheres Gefühl gibt.
