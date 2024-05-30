@@ -54,7 +54,7 @@ def mama_main(username):
     """, unsafe_allow_html=True)
     st.divider()
     # Gewichtseintrag
-    st.write('Gewicht')
+    st.subheader('Gewicht')
     mama_weight_date = st.date_input("Gewicht Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     mama_weight = st.number_input("Gewicht (kg)", min_value=0.0)
     if st.button("Gewicht speichern"):
@@ -67,17 +67,16 @@ def mama_main(username):
             mama_weights_df = new_row.copy()
         github.write_df(file_name, mama_weights_df, "Speicher Gewicht")
     # Gewicht Darstellung
-    st.subheader('Gewichtsdaten')
     if github.file_exists(f"mama_weights_{file_suffix}.csv"):
         mama_weights_df = github.read_df(f"mama_weights_{file_suffix}.csv")
         st.write(mama_weights_df)
     else:
         st.write("Noch keine Gewichtsdaten vorhanden.")
     # Blutwerte Eingabe
-    st.write('Blutwerte')
-    blutwerte_date = st.date_input("Blutwerte Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
+    st.subheader('Blutzuckerwert')
+    blutwerte_date = st.date_input("Blutzucker Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     blutwerte_text = st.text_area("Blutzuckerwerte")
-    if st.button("Blutwert speichern"):
+    if st.button("Blutzuckerwert speichern"):
         new_row = pd.DataFrame({"Datum": [blutwerte_date], "Blutzuckerwert (in mg/dL)": [blutwerte_text]})
         file_name = f"mama_blutwert_{file_suffix}.csv"
         if github.file_exists(file_name):
@@ -87,7 +86,6 @@ def mama_main(username):
             mama_blutwert_df = new_row.copy()
         github.write_df(file_name, mama_blutwert_df, "Speicher Blutzuckerwert")
     # Blutzucker Darstellung
-    st.subheader('Blutzuckerwert')
     if github.file_exists(f"mama_blutwert_{file_suffix}.csv"):
         mama_blutwert_df = github.read_df(f"mama_blutwert_{file_suffix}.csv")
         st.write(mama_blutwert_df)
@@ -108,7 +106,6 @@ def mama_main(username):
             tagebuch_df = new_row.copy()
         github.write_df(file_name, tagebuch_df, "Speicher Tagebucheintrag")
     # Tagebuch Darstellung
-    st.subheader('Tagebuch')
     if github.file_exists(f"tagebuch_{file_suffix}.csv"):
         tagebuch_df = github.read_df(f"tagebuch_{file_suffix}.csv")
         st.write(tagebuch_df)
