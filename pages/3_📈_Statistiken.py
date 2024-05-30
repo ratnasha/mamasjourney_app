@@ -5,7 +5,7 @@ from github_contents import GithubContents
 
 st.set_page_config(page_title="mamasjourney", page_icon=':ship:', layout="wide")
 
-# Initialize GithubContents object
+# Verbindung zu Github initialisieren
 github = GithubContents(
     st.secrets["github"]["owner"],
     st.secrets["github"]["repo"],
@@ -70,8 +70,11 @@ if authentication_status:
         <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schiff.jpg?raw=true" alt="ship" style="height: 1em; margin-left: 10px;">
     </h1>
     """, unsafe_allow_html=True)
+    
+    # Darstellung beider Graphen
     plot_graph(f'mama_weights_{username}.csv', 'Gewichtsverlauf', 'kg')
     plot_graph(f'mama_blutwert_{username}.csv', 'Blutzuckerwerte Verlauf', 'mg/dL')
+    
 elif authentication_status == False:
     st.error('Username/password is incorrect')
 elif authentication_status == None:
