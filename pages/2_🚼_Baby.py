@@ -64,6 +64,7 @@ def baby_main(username):
         <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schiff.jpg?raw=true" alt="ship" style="height: 1em; margin-left: 10px;">
     </h1>
     """, unsafe_allow_html=True)
+    # Babyname Ideen
     st.subheader('Ideen Babyname')
     baby_name_date = st.date_input("Babyname Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
     baby_name_text = st.text_area("Babyname")
@@ -100,7 +101,7 @@ def baby_main(username):
     with col2:
         st.markdown(html2, unsafe_allow_html=True)
 
-# Load configuration
+# Konfiguration laden
 def load_config():
     try:
         data = github.read_json("config.json")
@@ -115,9 +116,9 @@ def save_config(config):
     except Exception as e:
         st.error(f"Fehler beim Speichern der Konfigurationsdatei: {e}")
 
-# Laden der Konfigurationsdaten
 config = load_config()
-# Initialize the authenticator
+
+# Authenticator initialisieren
 authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
@@ -126,7 +127,7 @@ authenticator = stauth.Authenticate(
     config['preauthorized']
 )
 
-# Authentication and visualizing the elements
+# Authentication und Darstellung der Elemente
 name, authentication_status, username = authenticator.login()
 if authentication_status:
     authenticator.logout('Logout', 'main')
