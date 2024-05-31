@@ -64,42 +64,46 @@ def baby_main(username):
         <img src="https://github.com/ratnasha/mamasjourney_app/blob/main/Bilder/Schiff.jpg?raw=true" alt="ship" style="height: 1em; margin-left: 10px;">
     </h1>
     """, unsafe_allow_html=True)
+    # Tabs erstellen
+    tab1, tab2 = st.tabs(["Entwicklung Baby", "Babynamen"])
     # Babyname Ideen
-    st.subheader('Ideen Babyname')
-    baby_name_date = st.date_input("Babyname Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
-    baby_name_text = st.text_area("Babyname")
-    if st.button("Name speichern"):
-        new_row = pd.DataFrame({"Datum": [baby_name_date], "Babyname": [baby_name_text]})
-        file_name = f"baby_name_{file_suffix}.csv"
-        if github.file_exists(file_name):
-            mama_babyname_df = github.read_df(file_name)
-            mama_babyname_df = pd.concat([mama_babyname_df, new_row], ignore_index=True)
+    with tab2:
+        st.subheader('Ideen Babyname')
+        baby_name_date = st.date_input("Babyname Datum", value=datetime.today(), max_value=datetime.today(), format="YYYY/MM/DD")
+        baby_name_text = st.text_area("Babyname")
+        if st.button("Name speichern"):
+            new_row = pd.DataFrame({"Datum": [baby_name_date], "Babyname": [baby_name_text]})
+            file_name = f"baby_name_{file_suffix}.csv"
+            if github.file_exists(file_name):
+                mama_babyname_df = github.read_df(file_name)
+                mama_babyname_df = pd.concat([mama_babyname_df, new_row], ignore_index=True)
+            else:
+                mama_babyname_df = new_row.copy()
+            github.write_df(file_name, mama_babyname_df, "Speicher Babyname")
+        if github.file_exists(f"baby_name_{file_suffix}.csv"):
+            mama_babyname_df = github.read_df(f"baby_name_{file_suffix}.csv")
+            st.write(mama_babyname_df)
         else:
-            mama_babyname_df = new_row.copy()
-        github.write_df(file_name, mama_babyname_df, "Speicher Babyname")
-    if github.file_exists(f"baby_name_{file_suffix}.csv"):
-        mama_babyname_df = github.read_df(f"baby_name_{file_suffix}.csv")
-        st.write(mama_babyname_df)
-    else:
-        st.write("Noch keine Babynamen vorhanden.")
+            st.write("Noch keine Babynamen vorhanden.")
     # Visualisierung der Grössenentwicklung des Babys
-    st.subheader('Entwicklung Baby')
-    df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Grösse"])
-    def path_to_image_html(image_name):
-        if image_name:  
-            return f'<img src="{base_url}{image_name}?raw=true" width="150" >'
-        return "" 
-    df['Grösse'] = df['Grösse'].apply(path_to_image_html)
-    mid_index = len(df) // 2
-    df1 = df.iloc[:mid_index]
-    df2 = df.iloc[mid_index:]
-    html1 = df1.to_html(escape=False, index=False, justify='center', border=0)
-    html2 = df2.to_html(escape=False, index=False, justify='center', border=0)
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown(html1, unsafe_allow_html=True)
-    with col2:
-        st.markdown(html2, unsafe_allow_html=True)
+    with tab1:
+        st.subheader('Entwicklung Baby')
+        df = pd.DataFrame(fruchtgroessen, columns=["Schwangerschaftswoche", "Grösse"])
+        def path_to_image_html(image_name):
+            if image_name:  
+                return f'<img src="{base_url}{image_name}?raw=true" width="150" >'
+            return "" 
+        df['Grösse'] = df['Grösse'].apply(path_to_image_html)
+        mid_index = len(df) // 2
+        df1 = df.iloc[:mid_index]
+        df2 = df.iloc[mid_index:]
+        html1 = df1.to_html(escape=False, index=False, justify='center', border=0)
+        html2 = df2.to_html(escape=False, index=False, justify='center', border=0)
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown(html1, unsafe_allow_html=True)
+        with col2:
+            st.markdown(html2, unsafe_allow_html=True)
 
 # Konfiguration laden
 def load_config():
